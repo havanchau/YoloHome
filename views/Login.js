@@ -28,8 +28,8 @@ export default Login = () => {
           loop
           style={{width: 350, height: 300}}
         />           
-        <View className='mb-4'>
-          <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-[280] pl-5 pr-40 py-4 text-left'
+        <View className='mb-2'>
+          <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-[280] pl-5 pr-40 py-3 text-left'
           placeholder="Nhập địa chỉ Email"
           keyboardType="email-address"
           autoCapitalize="none"
@@ -39,7 +39,7 @@ export default Login = () => {
           </TextInput>
         </View>
         <View>
-          <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-[280] pl-5 pr-40 py-4 text-left'
+          <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-[280] pl-5 pr-40 py-3 text-left'
           placeholder="Nhập mật khẩu"
           secureTextEntry={!passwordVisible}
           autoCapitalize="none"
@@ -48,7 +48,9 @@ export default Login = () => {
 
           </TextInput>
         </View>
-        <TouchableOpacity className='py-4 px-8 m-12 bg-bluebg rounded-md'><Text className='text-xl text-white'>Đăng nhập</Text></TouchableOpacity>
+        <Text className='text-right w-[280] text-bluebg p-2'>Quên mật khẩu?</Text>
+        <TouchableOpacity className='py-3 px-8 mt-6 bg-bluebg rounded-md w-[280] flex-1 items-center'><Text className='text-xl text-white'>Đăng nhập</Text></TouchableOpacity>
+        <Text className='pt-2'>Bạn chưa có tài khoản ? <Text className='text-bluebg'>Đăng ký</Text></Text>
       </View>
     </TailwindProvider>
   );
