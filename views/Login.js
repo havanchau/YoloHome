@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import { View, Text, TextInput,Image,TouchableOpacity} from "react-native";
 import LottieView from 'lottie-react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
+import { useNavigation } from '@react-navigation/native';
+
 import logo from "../assets/logo.png"
 import homeJson from "../assets/home_1.json";
 
 export default Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false); 
-
+  const navigation = useNavigation();
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
   const handlePress = () => {
     console.log("Button pressed");
+    navigation.navigate('User Management');
   };
   return (
     <TailwindProvider>
@@ -49,7 +52,7 @@ export default Login = () => {
           </TextInput>
         </View>
         <Text className='text-right w-[280] text-bluebg p-2'>Quên mật khẩu?</Text>
-        <TouchableOpacity className='py-3 px-8 mt-6 bg-bluebg rounded-md w-[280] flex-1 items-center'><Text className='text-xl text-white'>Đăng nhập</Text></TouchableOpacity>
+        <TouchableOpacity className='py-3 px-8 mt-6 bg-bluebg rounded-md w-[280] flex-1 items-center' onPress={handlePress}><Text className='text-xl text-white'>Đăng nhập</Text></TouchableOpacity>
         <Text className='pt-2'>Bạn chưa có tài khoản ? <Text className='text-bluebg'>Đăng ký</Text></Text>
       </View>
     </TailwindProvider>
