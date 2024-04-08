@@ -51,13 +51,13 @@ export default InfoAdminView = () =>
                         <Text className='font-bold text-lg w-[240] '>Liên hệ</Text>
                         <TouchableOpacity><Feather name='chevron-right' size={20}></Feather></TouchableOpacity>
                     </View>
-                    <View className='flex flex-row items-center pb-4'>
+                    <TouchableOpacity className='flex flex-row items-center pb-4'>
+
                         <View className='rounded-full bg-red-400 p-2 mr-3'>
                             <Entypo name='block' size={20} className='text-red-900'></Entypo>
                         </View>
                         <Text className='font-bold text-lg w-[240] text-red-600 '>Block User</Text>
-                        <TouchableOpacity><Feather name='chevron-right' size={20}></Feather></TouchableOpacity>
-                    </View>
+                    </TouchableOpacity>
                 </ScrollView>
             </View>
         </TailwindProvider>

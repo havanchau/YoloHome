@@ -33,7 +33,7 @@ export default UserManagement = () => {
         <SearchBar></SearchBar>
         <ScrollView className='pt-6'>
         {userList.map( user => (
-          <TouchableOpacity className='flex flex-row w-[280] py-2 items-center' onPress={handlePress}>
+          <TouchableOpacity className='flex flex-row w-full px-8 py-2 items-center' onPress={handlePress}>
                 <Image
                 className='w-[50] h-[50] rounded-full mr-4'
                 source={{uri:user.imageUri}}

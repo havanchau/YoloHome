@@ -13,11 +13,11 @@ export default SearchBar = () =>{
     
     return(
         <TailwindProvider>
-            <View className='flex flex-row w-screen items-center justify-center'>
+            <View className='flex flex-row w-screen px-10 items-center justify-center'>
                     <View ><Feather name="search" size={20} color="gray" /></View>
-                    <View >
+                    <View className="w-3/4">
                         <TextInput
-                        className='p-4 w-[260] text-sm text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500'
+                        className='p-4 w-full text-sm text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500'
                         placeholder="Tìm kiếm ..."
                         placeholderTextColor="gray"
                         onChangeText={setSearchQuery}
