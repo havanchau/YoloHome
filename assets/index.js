@@ -5,5 +5,9 @@ const Images = {
     userMale: require("./user-male.png"),
 }
 
+const Icons = {
 
-export default Images;
+}
+
+
+export { Images, Icons};

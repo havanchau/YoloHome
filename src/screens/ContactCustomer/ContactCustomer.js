@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-import Images from "../../assets/images/Image";
+import Images from "../../../assets";
 
 const user = {
   name: "Nguyễn Thị A",

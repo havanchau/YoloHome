@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 
-import DeviceSale from "./src/screens/DeviceSale";
-import NewDevice from "./src/screens/NewDevice";
-import MaintenanceSchedule from "./src/screens/MaintenanceSchedule";
-import ContactCustomer from "./src/screens/ContactCustomer";
-import MessageContact from "./src/screens/MessageContact";
+import DeviceSale from "./src/screens/DeviceSale/DeviceSale";
+import NewDevice from "./src/screens/NewDevice/NewDevice";
+import MaintenanceSchedule from "./src/screens/MaintenanceSchedule/MaintenanceSchedule";
+import ContactCustomer from "./src/screens/ContactCustomer/ContactCustomer";
+import MessageContact from "./src/screens/MessageContact/MessageContact";
 
 export default function App() {
   return (
@@ -15,6 +15,7 @@ export default function App() {
       {/* <MaintenanceSchedule /> */}
       {/* <ContactCustomer /> */}
       <MessageContact />
+      <Test />
     </View>
   );
 }

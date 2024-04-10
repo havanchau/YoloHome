@@ -1,9 +1,9 @@
 import React from "react";
 import { View } from "react-native";
 
-import SalerSearch from "../components/SalerSearch";
-import ProductCard from "../components/ProductCard";
-import Images from "../../assets/images/Image";
+import SalerSearch from "../../components/SalerSearch/SalerSearch";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import Images from "../../../assets";
 
 
 const products = [
