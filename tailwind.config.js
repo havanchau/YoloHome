@@ -1,9 +1,15 @@
-/** @type {import('tailwindcss').Config} */
+// /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./App.{js,jsx,ts,tsx}", "./src/**/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        'bluebg':'#254BEC',
+        'lightblue':'#BED4FF',
+        'superlight':'#DAEBFF',
+      }
+    },
+    
   },
   plugins: [],
 }
-
