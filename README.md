@@ -1,3 +1,3 @@
-## YoloHome Mobile Application
+YoloHome Mobile Application
+To run app, run: npx expo start
 
-## To run app, running $yarn expo start
