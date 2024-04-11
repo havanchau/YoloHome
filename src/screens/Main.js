@@ -1,6 +1,7 @@
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 
-import TabNavigator from "../navigations/TabNavigation";
+import CustomerTabNavigator from "../navigations/CustomerTabNavigation";
+import SalerTabNavigator from "../navigations/SalerTabNavigation";
 import AuthNavigator from "../navigations/AuthNavigation";
 
 const MyTheme = {
@@ -23,7 +24,7 @@ const Main = () => {
 
   return (
     <NavigationContainer theme={MyTheme}>
-      {isLoggedIn ? <TabNavigator /> : <AuthNavigator />}
+      {isLoggedIn ? user == 'CUSTOMER' ? <CustomerTabNavigator /> : <SalerTabNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };

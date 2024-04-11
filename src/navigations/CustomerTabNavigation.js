@@ -26,7 +26,7 @@ const SalerStack = () => {
   );
 };
 
-const TabNavigation = () => {
+const CustomerTabNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -36,10 +36,7 @@ const TabNavigation = () => {
     >
       <Stack.Screen name="Home" component={SalerStack} />
     </Stack.Navigator>
-    // <View>
-    //   <Text>Hehe</Text>
-    // </View>
   );
 };
 
-export default TabNavigation;
+export default CustomerTabNavigator;
