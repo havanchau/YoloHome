@@ -7,15 +7,16 @@ import MaintenanceSchedule from "./src/screens/MaintenanceSchedule/MaintenanceSc
 import ContactCustomer from "./src/screens/ContactCustomer/ContactCustomer";
 import MessageContact from "./src/screens/MessageContact/MessageContact";
 
+import AddDevice from './src/screens/addDevice';
+import CreateDevice from './src/screens/createDevice';
+import DeleteDevice from './src/screens/deleteDevice';
+import Notify from './src/screens/notification';
+import PowerConsump from './src/screens/powerConsump';
+
 export default function App() {
   return (
-    <View className="flex-1 px-8 py-6 mt-8 bg-white">
-      {/* <NewDevice /> */}
-      {/* <DeviceSale /> */}
-      {/* <MaintenanceSchedule /> */}
-      {/* <ContactCustomer /> */}
-      <MessageContact />
-      <Test />
-    </View>
+    <View>
+      <DeleteDevice/>
+    <View/>
   );
 }
