@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Image} from "react-native";
 
 import { Ionicons, Feather } from "react-native-vector-icons";
 
-const Notify = () => {
+const Notification = () => {
     return(
         <View className="w-full pt-9">
             <View className="flex flex-row justify-items-center">
@@ -76,4 +76,4 @@ const Notify = () => {
     );
 }
 
-export default Notify;
+export default Notification;

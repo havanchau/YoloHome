@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput,Image,TouchableOpacity,ScrollView} from "react-native";
 import { TailwindProvider } from 'tailwindcss-react-native';
-import SearchBar from './../../components/SearchBar/SearchBar'
+import SearchBar from '../components/SearchBar/SearchBar'
 import { useNavigation } from '@react-navigation/native';
 export default UserManagement = () => {
   const navigation = useNavigation();
@@ -25,7 +25,7 @@ export default UserManagement = () => {
   ];
   const handlePress = () => {
     console.log("Button pressed");
-    navigation.navigate('Info');
+    navigation.navigate('InfoUserView');
   };
   return (
       <View className='flex-1 items-center pb-10 pt-10'>

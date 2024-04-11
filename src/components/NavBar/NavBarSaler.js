@@ -28,7 +28,7 @@ export default NavBarSaler = () =>
         return selectedIcon === iconName ? '#199A8E' : '#000'; 
     }
     return (
-        <View className='flex flex-row grow w-screen px-4 justify-between'>
+        <View className='flex flex-row grow justify-between'>
             <TouchableOpacity onPress={pressHome} className='mr-4'><Entypo className='text-blue-900' name='home' size={40}/></TouchableOpacity>
             <TouchableOpacity onPress={pressShop} className='mr-4'><Entypo className='text-blue-900'  name='shop' size={40}/></TouchableOpacity>
             <TouchableOpacity onPress={pressChat} className='mr-4'><AntDesign className='text-blue-900' name='message1' size={40}/></TouchableOpacity>

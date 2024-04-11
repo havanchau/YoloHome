@@ -4,7 +4,7 @@ import { Text, View } from 'react-native';
 const MessageContact = () => {
   return (
     <View className="">
-        <Text className="">Hê lô hehe</Text>
+        <Text className="">***</Text>
     </View>
   )
 }

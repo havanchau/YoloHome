@@ -1,8 +1,8 @@
 const Images = {
-    airConditioning: require("./air-conditioning.png"),
-    light: require("./light.jpeg"),
-    userFemale: require("./user-female.png"),
-    userMale: require("./user-male.png"),
+    airConditioning: require("./images/air-conditioning.png"),
+    light: require("./images/light.jpeg"),
+    userFemale: require("./images/user-female.png"),
+    userMale: require("./images/user-male.png"),
 }
 
 const Icons = {

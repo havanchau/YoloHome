@@ -11,7 +11,7 @@ export default HomeScreen = () => {
     <TailwindProvider>
       <View className='flex-1 items-center pb-10 pt-10 space-y-16'>
         <View className = 'w-[280] h-[80]'>
-            <TouchableOpacity className='py-3 px-8 mt-6 bg-bluebg rounded-md  flex-1 items-center' onPress={()=>navigation.navigate('User Management')}>
+            <TouchableOpacity className='py-3 px-8 mt-6 bg-bluebg rounded-md  flex-1 items-center' onPress={()=>navigation.navigate('UserManagement')}>
                 <Text className='text-base text-white'>Quản lí người dùng</Text>
             </TouchableOpacity>
         </View>

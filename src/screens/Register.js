@@ -4,7 +4,7 @@ import LottieView from 'lottie-react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
 import { useNavigation } from '@react-navigation/native';
 import RNPickerSelect from 'react-native-picker-select';
-import homeJson from "../../../assets/home_1.json";
+import homeJson from "../../assets/home_1.json";
 
 export default Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false); 

@@ -4,8 +4,8 @@ import LottieView from 'lottie-react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
 import { useNavigation } from '@react-navigation/native';
 import {Feather, Entypo} from 'react-native-vector-icons';
-import AreaChart from '../../components/AreaChart/AreaChart'
-export default InfoAdminView = () =>
+import AreaChart from '../components/AreaChart/AreaChart'
+export default InfoUserView = () =>
 {
     return(
         <TailwindProvider>

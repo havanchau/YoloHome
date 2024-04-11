@@ -27,7 +27,7 @@ export default NavBarCustomer = () =>
         return selectedIcon === iconName ? '#199A8E' : '#000'; 
     }
     return (
-        <View className='flex flex-row grow w-screen px-4 justify-between'>
+        <View className='flex flex-row grow justify-between'>
             <TouchableOpacity onPress={pressHome} className='mr-4'><Entypo className='text-blue-900' name='home' size={40}/></TouchableOpacity>
             <TouchableOpacity onPress={pressShop} className='mr-4'><Entypo className='text-blue-900' name='shopping-cart' size={40}/></TouchableOpacity>
             <TouchableOpacity onPress={pressDev} className='mr-4'><MaterialCommunityIcons className='text-blue-900' name='devices' size={40}></MaterialCommunityIcons></TouchableOpacity> 

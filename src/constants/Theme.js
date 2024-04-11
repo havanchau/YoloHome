@@ -1,5 +1,9 @@
 const LIGHT_MODE = {
-
+    primary: 'blue-700',
+    white: 'white',
+    black: 'black',
+    primaryText: 'black',
+    secondaryText: 'white',
 }
 
 const DARK_MODE = {
