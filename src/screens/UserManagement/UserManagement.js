@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput,Image,TouchableOpacity,ScrollView} from "react-native";
 import { TailwindProvider } from 'tailwindcss-react-native';
-import SearchBar from '../../components/SearchBar/SearchBar';
+import SearchBar from './../../components/SearchBar/SearchBar'
 import { useNavigation } from '@react-navigation/native';
 export default UserManagement = () => {
   const navigation = useNavigation();
@@ -28,12 +28,11 @@ export default UserManagement = () => {
     navigation.navigate('Info');
   };
   return (
-    <TailwindProvider>
       <View className='flex-1 items-center pb-10 pt-10'>
         <SearchBar></SearchBar>
         <ScrollView className='pt-6'>
         {userList.map( user => (
-          <TouchableOpacity className='flex flex-row w-[280] py-2 items-center' onPress={handlePress}>
+          <TouchableOpacity className='flex flex-row w-full px-8 py-2 items-center' onPress={handlePress}>
                 <Image
                 className='w-[50] h-[50] rounded-full mr-4'
                 source={{uri:user.imageUri}}
@@ -46,6 +45,5 @@ export default UserManagement = () => {
           </TouchableOpacity>))}
         </ScrollView>
       </View>
-    </TailwindProvider>
   );
 };
