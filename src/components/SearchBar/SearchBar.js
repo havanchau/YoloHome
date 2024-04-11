@@ -12,7 +12,6 @@ export default SearchBar = () =>{
       };
     
     return(
-        <TailwindProvider>
             <View className='flex flex-row w-screen px-10 items-center justify-center'>
                     <View ><Feather name="search" size={20} color="gray" /></View>
                     <View className="w-3/4">
@@ -30,6 +29,5 @@ export default SearchBar = () =>{
                     className="w-[60] h-[30]"
                     />      
             </View>
-        </TailwindProvider>
     );
 }
