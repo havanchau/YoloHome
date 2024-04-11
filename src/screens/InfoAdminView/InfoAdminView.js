@@ -7,7 +7,6 @@ import {Feather, Entypo} from 'react-native-vector-icons';
 export default InfoAdminView = () =>
 {
     return(
-        <TailwindProvider>
             <View className='flex-1 items-center pt-10'>
                 <Image
                 className='w-[80] h-[80] rounded-full mr-4'
@@ -59,6 +58,5 @@ export default InfoAdminView = () =>
                     </TouchableOpacity>
                 </ScrollView>
             </View>
-        </TailwindProvider>
     );
 }

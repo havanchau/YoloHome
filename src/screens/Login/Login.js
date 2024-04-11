@@ -18,7 +18,6 @@ export default Login = () => {
     navigation.navigate('User Management');
   };
   return (
-    <TailwindProvider>
       <View className='flex-1 items-center pb-10 pt-10 w-screen'>
         <Text className='font-bold text-2xl'>Welcome back!</Text>
         <Image 
@@ -55,6 +54,5 @@ export default Login = () => {
         <TouchableOpacity className='py-3 px-8 mt-6 bg-bluebg rounded-md w-[280] flex items-center' onPress={handlePress}><Text className='text-xl text-white'>Đăng nhập</Text></TouchableOpacity>
         <Text className='pt-2'>Bạn chưa có tài khoản ? <Text className='text-bluebg'>Đăng ký</Text></Text>
       </View>
-    </TailwindProvider>
   );
 };
