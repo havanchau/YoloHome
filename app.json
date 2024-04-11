@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "YoloHome",
-    "slug": "YoloHome",
+    "name": "yoloapp",
+    "slug": "yoloapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
