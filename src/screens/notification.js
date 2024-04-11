@@ -5,7 +5,7 @@ import { Ionicons, Feather } from "react-native-vector-icons";
 
 const Notify = () => {
     return(
-        <View className="w-full pt-10">
+        <View className="w-full pt-9">
             <View className="flex flex-row justify-items-center">
                 <Ionicons
                     name="arrow-back-outline"

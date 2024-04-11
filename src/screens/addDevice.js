@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { View, Text, TextInput, TouchableOpacity, Image} from "react-native";
 
 import { Ionicons, Feather } from "react-native-vector-icons";
-import lockDoor from "../assets/lockDoor.jpg"
+import lockDoor from "../../assets/lockDoor.jpg"
 
 const AddDevice = () => {
     return (
