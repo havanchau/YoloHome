@@ -1,9 +1,9 @@
 import React from "react";
 import { View, TouchableOpacity } from "react-native";
 
-import SalerSearch from "../../components/SalerSearch/SalerSearch";
-import ProductCard from "../../components/ProductCard/ProductCard";
-import { Images } from "../../../assets/index";
+import SalerSearch from "../components/SalerSearch/SalerSearch";
+import ProductCard from "../components/ProductCard/ProductCard";
+import { Images } from "../../assets/index";
 
 
 const products = [

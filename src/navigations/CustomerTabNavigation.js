@@ -3,28 +3,49 @@ import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import NewDevice from "../screens/NewDevice/NewDevice";
-import DeviceSale from "../screens/DeviceSale/DeviceSale";
+import HomeScreen from "../screens/HomeScreen";
+import UserManagement from "../screens/UserManagement";
+import ControlDevice from "../screens/ControlDevice";
+import InfoUserView from "../screens/InfoUserView";
+import AccessDevice from "../screens/AccessDevice";
+
+import NavBarCustomer from "../components/NavBar/NavBarCustomer";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const SalerStack = () => {
+const CustomerStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="NewDevice"
-        component={NewDevice}
+        name="HomeScreen"
+        component={HomeScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="DeviceSale"
-        component={DeviceSale}
+        name="UserManagement"
+        component={UserManagement}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ControlDevice"
+        component={ControlDevice}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="InfoUserView"
+        component={InfoUserView}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="AccessDevice"
+        component={AccessDevice}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );
 };
+
 
 const CustomerTabNavigator = () => {
   return (
@@ -34,7 +55,7 @@ const CustomerTabNavigator = () => {
         cardStyle: { backgroundColor: "white" },
       }}
     >
-      <Stack.Screen name="Home" component={SalerStack} />
+      <Stack.Screen name="Home" component={CustomerStack} />
     </Stack.Navigator>
   );
 };

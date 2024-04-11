@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { FontAwesome6 } from "react-native-vector-icons";
 import { Calendar, LocaleConfig } from "react-native-calendars";
-import { CORLOR } from "../../constants";
+import { CORLOR } from "../constants";
 
 
 const tasks = [

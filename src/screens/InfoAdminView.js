@@ -4,11 +4,9 @@ import LottieView from 'lottie-react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
 import { useNavigation } from '@react-navigation/native';
 import {Feather, Entypo} from 'react-native-vector-icons';
-import AreaChart from '../../components/AreaChart/AreaChart'
-export default InfoUserView = () =>
+export default InfoAdminView = () =>
 {
     return(
-        <TailwindProvider>
             <View className='flex-1 items-center pt-10'>
                 <Image
                 className='w-[80] h-[80] rounded-full mr-4'
@@ -46,20 +44,19 @@ export default InfoUserView = () =>
                     </View>
                     <View className='flex flex-row items-center pb-4'>
                         <View className='rounded-full bg-lightblue p-2 mr-3'>
-                            <Entypo name='back-in-time' size={20} className='text-bluebg'></Entypo>
+                            <Entypo name='message' size={20} className='text-bluebg'></Entypo>
                         </View>
-                        <Text className='font-bold text-lg w-[240] '>Lịch sử hoạt động</Text>
+                        <Text className='font-bold text-lg w-[240] '>Liên hệ</Text>
                         <TouchableOpacity><Feather name='chevron-right' size={20}></Feather></TouchableOpacity>
                     </View>
-                    <View className='flex flex-row items-center pb-4'>
+                    <TouchableOpacity className='flex flex-row items-center pb-4'>
+
                         <View className='rounded-full bg-red-400 p-2 mr-3'>
-                            <Entypo name='warning' size={20} className='text-red-900'></Entypo>
+                            <Entypo name='block' size={20} className='text-red-900'></Entypo>
                         </View>
-                        <Text className='font-bold text-lg w-[240] text-red-600 '>Đăng xuất</Text>
-                        <TouchableOpacity><Feather name='chevron-right' size={20}></Feather></TouchableOpacity>
-                    </View>
+                        <Text className='font-bold text-lg w-[240] text-red-600 '>Block User</Text>
+                    </TouchableOpacity>
                 </ScrollView>
             </View>
-        </TailwindProvider>
     );
 }

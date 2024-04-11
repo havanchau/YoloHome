@@ -8,9 +8,9 @@ import {
   ScrollView,
 } from "react-native";
 import { TailwindProvider } from "tailwindcss-react-native";
-import trash from "../../../assets/trash.png";
-import plus from "../../../assets/plus.png";
-import edit from "../../../assets/edit.png";
+import trash from "../../assets/trash.png";
+import plus from "../../assets/plus.png";
+import edit from "../../assets/edit.png";
 import { useNavigation } from "@react-navigation/native";
 export default ControlDevice = () => {
   const navigation = useNavigation();

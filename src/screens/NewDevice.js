@@ -3,8 +3,8 @@ import { View, Text, TextInput, TouchableOpacity, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { Ionicons, Feather } from "react-native-vector-icons";
-import { CORLOR } from "../../constants";
-import UploadImage from "../../components/UploadImage/UploadImage";
+import { CORLOR } from "../constants";
+import UploadImage from "../components/UploadImage/UploadImage";
 
 const NewDevice = () => {
   const [deviceInfo, setDeviceInfo] = useState({

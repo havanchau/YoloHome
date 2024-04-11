@@ -9,13 +9,13 @@ import {
 } from "react-native";
 import { TailwindProvider } from "tailwindcss-react-native";
 import { useNavigation } from "@react-navigation/native";
-import plus from "../../../assets/plus.png";
-import trash from "../../../assets/trash.png";
-import aircondition from "../../../assets/DeviceImages/aircondition.png";
-import light from "../../../assets/DeviceImages/light.png";
-import waterboiler from "../../../assets/DeviceImages/waterboiler.png";
-import fan from "../../../assets/DeviceImages/pan.png";
-import television from "../../../assets/DeviceImages/television.png";
+import plus from "../../assets/plus.png";
+import trash from "../../assets/trash.png";
+import aircondition from "../../assets/DeviceImages/aircondition.png";
+import light from "../../assets/DeviceImages/light.png";
+import waterboiler from "../../assets/DeviceImages/waterboiler.png";
+import fan from "../../assets/DeviceImages/pan.png";
+import television from "../../assets/DeviceImages/television.png";
 
 export default AccessDevice = () => {
   const navigation = useNavigation();
