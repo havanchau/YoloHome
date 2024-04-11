@@ -4,7 +4,8 @@
     "slug": "YoloHome",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "platforms": ["ios", "android"],
+    "permissions": ["mediaLibrary"],
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",

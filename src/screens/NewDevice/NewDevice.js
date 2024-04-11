@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Button } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { Ionicons, Feather } from "react-native-vector-icons";
+import { CORLOR } from "../../constants";
+import UploadImage from "../../components/UploadImage/UploadImage";
 
 const NewDevice = () => {
   const [deviceInfo, setDeviceInfo] = useState({
@@ -11,8 +14,12 @@ const NewDevice = () => {
     image: "",
   });
 
+  const navigator = useNavigation();
+
+  const [photo, setPhoto] = useState(null);
+
   return (
-    <View className="w-full">
+    <View className={`w-full bg-${CORLOR.white}`}>
       <View className="flex items-center justify-center mt-8 bg-blue-700 h-16 rounded-t-3xl">
         <Text className="px-2 text-2xl font-medium mb-1 text-white">
           Thêm sản phẩm mới
@@ -67,7 +74,7 @@ const NewDevice = () => {
             }
             className="text-normal font-semibold w-full pt-2 pl-4 border-1 border-b border-gray-200"
             placeholder="Nhập giá sản phẩm"
-            value={deviceInfo.price}
+            value={deviceInfo.price != 0 ? deviceInfo.price.toString() : ""}
           />
           <View className="items-end pt-1 pr-2">
             <Text className="text-gray-500">VND</Text>
@@ -106,25 +113,25 @@ const NewDevice = () => {
         </View>
       </View>
 
-      <View className="flex-row items-center mb-4">
-        <Feather name="image" size={32} className="mr-2" />
-        <Text className="text-lg font-semibold">Thêm hình ảnh</Text>
-      </View>
+      <UploadImage photo={photo} setPhoto={setPhoto} title="Add new image" />
 
       <TouchableOpacity
-        onPress=""
+        onPress={() => navigator.navigate("DeviceSale")}
         className="w-full h-12 items-center flex bg-blue-700 justify-center rounded-xl mt-8"
       >
         <Text className="text-lg font-semibold text-white">Xác nhận</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={(e) => setDeviceInfo({
-          deviceName: "",
-          price: 0,
-          description: "",
-          image: "",
-        })}
+        onPress={(e) => {
+          setDeviceInfo({
+            deviceName: "",
+            price: 0,
+            description: "",
+            image: "",
+          });
+          navigator.navigate("DeviceSale");
+        }}
         className="w-full h-12 items-center flex bg-gray-400 justify-center rounded-xl mt-4"
       >
         <Text className="text-lg font-semibold text-black">Hủy</Text>
