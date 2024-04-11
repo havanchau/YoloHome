@@ -58,6 +58,12 @@ import AccessDevice from "./src/screens/AccessDevice/AccessDevice";
 import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
 const Stack = createNativeStackNavigator();
 
+import AddDevice from './src/screens/addDevice';
+import CreateDevice from './src/screens/createDevice';
+import DeleteDevice from './src/screens/deleteDevice';
+import Notify from './src/screens/notification';
+import PowerConsump from './src/screens/powerConsump';
+
 export default function App() {
   return (
     <NavigationContainer>
