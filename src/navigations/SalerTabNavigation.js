@@ -5,7 +5,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import NewDevice from "../screens/NewDevice";
 import DeviceSale from "../screens/DeviceSale";
-import NavBarCustomer from "../components/NavBar/NavBarCustomer";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
