@@ -51,7 +51,7 @@ export default infoQuat = () => {
     const fetchData = async () => {
       try {
         const username = process.env.USERNAME;
-        const key = process.env.PASSWORD;
+        const key = localStorage.getItem("password");
         const response = await axios.get(
           "https://io.adafruit.com/api/v2/thanhliemtala/feeds/button2",
           {
@@ -91,7 +91,7 @@ export default infoQuat = () => {
     const fetchSensorData = async () => {
       try {
         const username = process.env.USERNAME;
-        const key = process.env.PASSWORD;
+        const key = localStorage.getItem("password");
         const response = await axios.get(
           "https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien1",
           {
@@ -113,7 +113,7 @@ export default infoQuat = () => {
     const fetchLightData = async () => {
       try {
         const username = process.env.USERNAME;
-        const key = process.env.PASSWORD;
+        const key = localStorage.getItem("password");
         const response = await axios.get(
           "https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien2",
           {
@@ -135,7 +135,7 @@ export default infoQuat = () => {
     const fetchHumiData = async () => {
       try {
         const username = process.env.USERNAME;
-        const key = process.env.PASSWORD;
+        const key = localStorage.getItem("password");
         const response = await axios.get(
           "https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien3",
           {

@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import { View, Text, TextInput,Image,TouchableOpacity} from "react-native";
-import LottieView from 'lottie-react-native';
-import { TailwindProvider } from 'tailwindcss-react-native';
-import { useNavigation } from '@react-navigation/native';
+import axios from "axios";
+import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import LottieView from "lottie-react-native";
+import { TailwindProvider } from "tailwindcss-react-native";
+import { useNavigation } from "@react-navigation/native";
 
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import homeJson from "../assets/home_1.json";
 
-
-
 export default infoDenTran = () => {
-
   // const [mode, setMode] = useState("TẮT");
   // const [timer, setTimer] = useState(0);
   // const [currentDate, setCurrentDate] = useState(new Date().getDate());
@@ -22,10 +19,9 @@ export default infoDenTran = () => {
   const [sensorValue, setSensorValue] = useState(null); // Thêm state để lưu giá trị từ cambien1
   const [lightValue, setLightValue] = useState(null); // Thêm state để lưu giá trị từ cambien2
   const [humiValue, setHumiValue] = useState(null); // Thêm state để lưu giá trị từ cambien
-  const username = process.env.USERNAME;
-  const key = process.env.PASSWORD;
+
   useEffect(() => {
-    let interval =null;
+    let interval = null;
 
     if (mode === "BẬT") {
       interval = setInterval(() => {
@@ -56,68 +52,70 @@ export default infoDenTran = () => {
 
   const sendDataToAdafruit = async (value) => {
     try {
+      const username = process.env.USERNAME;
+      const key = localStorage.getItem("password");
       const response = await axios.post(
-        'https://io.adafruit.com/api/v2/thanhliemtala/feeds/button1/data',
+        "https://io.adafruit.com/api/v2/thanhliemtala/feeds/button1/data",
         {
           value: value,
         },
         {
           headers: {
-            'X-AIO-Key': key,
-            'Content-Type': 'application/json',
+            "X-AIO-Key": key,
+            "Content-Type": "application/json",
           },
         }
       );
 
       // Xử lý dữ liệu nhận được từ Adafruit
-      console.log('Dữ liệu từ Adafruit:', response.data);
+      console.log("Dữ liệu từ Adafruit:", response.data);
     } catch (error) {
-      console.error('Lỗi khi gửi dữ liệu tới Adafruit:', error);
+      console.error("Lỗi khi gửi dữ liệu tới Adafruit:", error);
     }
   };
 
- useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
+        const username = process.env.USERNAME;
+        const key = localStorage.getItem("password");
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/button1',
+          "https://io.adafruit.com/api/v2/thanhliemtala/feeds/button1",
           {
             headers: {
-              'X-AIO-Key': key,
-              'Content-Type': 'application/json',
+              "X-AIO-Key": key,
+              "Content-Type": "application/json",
             },
           }
         );
 
         const value = response.data.last_value; // Lấy giá trị mới nhất từ Adafruit
 
-
-
-          // Cập nhật giá trị vào trạng thái của ứng dụng
-          if (value === "0") {
-            // mode = "TẮT";
-            setMode("TẮT");
-          } else if (value === "1") {
-            // mode = "MỨC 1";
-            setMode("BẬT");
-          } 
+        // Cập nhật giá trị vào trạng thái của ứng dụng
+        if (value === "0") {
+          // mode = "TẮT";
+          setMode("TẮT");
+        } else if (value === "1") {
+          // mode = "MỨC 1";
+          setMode("BẬT");
+        }
 
         setPrevMode(value); // Cập nhật giá trị mới vào biến trạng thái lưu giữ giá trị trước đó
-
-
       } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu từ Adafruit:', error);
+        console.error("Lỗi khi lấy dữ liệu từ Adafruit:", error);
       }
     };
 
     const fetchSensorData = async () => {
       try {
+        const username = process.env.USERNAME;
+        const key = localStorage.getItem("password");
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien1',
+          "https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien1",
           {
             headers: {
-              'X-AIO-Key': key,
-              'Content-Type': 'application/json',
+              "X-AIO-Key": key,
+              "Content-Type": "application/json",
             },
           }
         );
@@ -126,19 +124,20 @@ export default infoDenTran = () => {
 
         setSensorValue(value);
       } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu từ Adafruit:', error);
+        console.error("Lỗi khi lấy dữ liệu từ Adafruit:", error);
       }
     };
 
-
     const fetchLightData = async () => {
       try {
+        const username = process.env.USERNAME;
+        const key = localStorage.getItem("password");
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien2',
+          "https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien2",
           {
             headers: {
-              'X-AIO-Key': key,
-              'Content-Type': 'application/json',
+              "X-AIO-Key": key,
+              "Content-Type": "application/json",
             },
           }
         );
@@ -147,18 +146,20 @@ export default infoDenTran = () => {
 
         setLightValue(value);
       } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu từ Adafruit:', error);
+        console.error("Lỗi khi lấy dữ liệu từ Adafruit:", error);
       }
     };
 
     const fetchHumiData = async () => {
       try {
+        const username = process.env.USERNAME;
+        const key = localStorage.getItem("password");
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien3',
+          "https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien3",
           {
             headers: {
-              'X-AIO-Key': key,
-              'Content-Type': 'application/json',
+              "X-AIO-Key": key,
+              "Content-Type": "application/json",
             },
           }
         );
@@ -167,11 +168,9 @@ export default infoDenTran = () => {
 
         setHumiValue(value);
       } catch (error) {
-        console.error('Lỗi khi lấy dữ liệu từ Adafruit:', error);
+        console.error("Lỗi khi lấy dữ liệu từ Adafruit:", error);
       }
     };
-
-    
 
     fetchData(); // Gọi hàm fetchData lần đầu khi component được render
     fetchSensorData(); // Gọi hàm fetchSensorData lần đầu khi component được render
@@ -191,22 +190,20 @@ export default infoDenTran = () => {
     };
   }, []); // Chỉ gọi useEffect này một lần duy nhất khi component được render
 
-
-
   const toggleMode = () => {
-    if (mode === "TẮT"){
-        setMode("BẬT");
-        sendDataToAdafruit(1);
+    if (mode === "TẮT") {
+      setMode("BẬT");
+      sendDataToAdafruit(1);
     } else {
       setMode("TẮT");
       sendDataToAdafruit(0);
-    }  
-    };
-    const resetTimer = () => {
+    }
+  };
+  const resetTimer = () => {
     setTimer(0);
-    };
+  };
 
-    const formatTime = (time) => {
+  const formatTime = (time) => {
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
@@ -216,80 +213,86 @@ export default infoDenTran = () => {
     const formattedSeconds = String(seconds).padStart(2, "0");
 
     return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-    };
-
+  };
 
   return (
-  <TailwindProvider>
-      <View className='flex-1 items-center pb-10 pt-10'>
-        <Text className='font-bold text-2xl'>Thông tin chi tiết</Text>
-        <Image 
-          source={logo}
-          className="w-[140] h-[70]"
-        />    
-        <LottieView 
+    <TailwindProvider>
+      <View className="flex-1 items-center pb-10 pt-10">
+        <Text className="font-bold text-2xl">Thông tin chi tiết</Text>
+        <Image source={logo} className="w-[140] h-[70]" />
+        <LottieView
           source={homeJson}
           autoPlay
           loop
-          style={{width: 70, height:50}}
-        />        
+          style={{ width: 70, height: 50 }}
+        />
 
-        <Text className='font-bold text-xl mt-4'>Chế độ: {mode}</Text>
-        <Text className='font-bold text-xl'>Thời gian: {formatTime(timer)}</Text>   
+        <Text className="font-bold text-xl mt-4">Chế độ: {mode}</Text>
+        <Text className="font-bold text-xl">
+          Thời gian: {formatTime(timer)}
+        </Text>
         <TouchableOpacity
           onPress={toggleMode}
           style={{
-            alignItems: 'center',
+            alignItems: "center",
             paddingVertical: 30,
             marginTop: 30,
             paddingHorizontal: 60,
             marginBottom: 30,
-            backgroundColor: 'blue',
+            backgroundColor: "blue",
             borderRadius: 30,
           }}
         >
-        <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Chuyển đổi chế độ</Text>
+          <Text style={{ fontSize: 18, color: "white", fontWeight: "bold" }}>
+            Chuyển đổi chế độ
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{
-            alignItems: 'center',
+            alignItems: "center",
             paddingVertical: 30,
             paddingHorizontal: 60,
             marginTop: 8,
-            backgroundColor: 'blue',
+            backgroundColor: "blue",
             borderRadius: 30,
             width: "70%",
           }}
         >
-          <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Nhiệt độ: {sensorValue} °C</Text>
+          <Text style={{ fontSize: 18, color: "white", fontWeight: "bold" }}>
+            Nhiệt độ: {sensorValue} °C
+          </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={{
-            alignItems: 'center',
+            alignItems: "center",
             paddingVertical: 30,
             paddingHorizontal: 60,
             marginTop: 8,
-            backgroundColor: 'blue',
+            backgroundColor: "blue",
             borderRadius: 30,
             width: "70%",
           }}
         >
-          <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Ánh sáng: {lightValue} lux</Text>
+          <Text style={{ fontSize: 18, color: "white", fontWeight: "bold" }}>
+            Ánh sáng: {lightValue} lux
+          </Text>
         </TouchableOpacity>
 
-          <TouchableOpacity
+        <TouchableOpacity
           style={{
-            alignItems: 'center',
+            alignItems: "center",
             paddingVertical: 30,
             paddingHorizontal: 60,
             marginTop: 8,
-            backgroundColor: 'blue',
+            backgroundColor: "blue",
             borderRadius: 30,
             width: "70%",
           }}
         >
-          <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Độ ẩm: {humiValue} %</Text>
+          <Text style={{ fontSize: 18, color: "white", fontWeight: "bold" }}>
+            Độ ẩm: {humiValue} %
+          </Text>
         </TouchableOpacity>
       </View>
     </TailwindProvider>
