@@ -5,6 +5,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import NewDevice from "../screens/NewDevice";
 import DeviceSale from "../screens/DeviceSale";
+import MessageContact from "../screens/MessageContact";
+import ChatContact from "../screens/ChatContact";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -20,6 +23,16 @@ const SalerStack = () => {
       <Stack.Screen
         name="DeviceSale"
         component={DeviceSale}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="MessageContact"
+        component={MessageContact}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ChatContact"
+        component={ChatContact}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

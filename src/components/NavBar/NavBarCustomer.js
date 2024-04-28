@@ -20,7 +20,7 @@ export default NavBarCustomer = () =>
 
 
     const pressAcc = () => {
-        navigation.navigate('Info');
+        navigation.navigate('HomeScreen');
     }
 
     const iconColor = (iconName) => {
