@@ -2,21 +2,31 @@ import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, TextInput, Button, Image } from "react-native";
 import io from "socket.io-client"; // Import io from socket.io-client
 import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { Images } from "../../assets"
+import { Images } from "../../assets";
 import { API_URL } from "../contexts";
 
 const ChatContact = ({ route }) => {
   const [messages, setMessages] = useState([]);
   const [newMessageContent, setNewMessageContent] = useState("");
-  const [userIdSent, setUserIdSent] = useState("662c708b0ea5b75e861d8d1c");
-  const [userIdReceived, setUserIdReceived] = useState(
-    "662c70a60ea5b75e861d8d1f"
-  );
+  const [userIdSent, setUserIdSent] = useState("");
+  const [userIdReceived, setUserIdReceived] = useState("");
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("${API_URL}");
+    AsyncStorage.getItem("uid")
+      .then((uid) => {
+        setUserIdSent(uid);
+      })
+      .catch((error) => console.log(error));
+
+    const userIdReceived = route.params.id;
+    setUserIdReceived(userIdReceived);
+  }, []);
+
+  useEffect(() => {
+    const newSocket = io("http://10.0.2.2:4000");
     setSocket(newSocket);
     fetchMessages();
 
@@ -36,7 +46,7 @@ const ChatContact = ({ route }) => {
     try {
       axios
         .get(
-          `${API_URL}/messages/662c708b0ea5b75e861d8d1c/662c70a60ea5b75e861d8d1f`
+          `http://10.0.2.2:4000/messages/${userIdSent}/${userIdReceived}`
         )
         .then((response) => {
           setMessages(response.data);
@@ -49,7 +59,7 @@ const ChatContact = ({ route }) => {
 
   const sendMessage = async () => {
     try {
-      const response = await axios.post("${API_URL}/messages", {
+      const response = await axios.post("http://10.0.2.2:4000/messages", {
         userIdSent,
         userIdReceived,
         content: newMessageContent,
