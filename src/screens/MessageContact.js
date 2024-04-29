@@ -81,14 +81,13 @@ const MessageContact = () => {
     axios
       .get(`http://10.0.2.2:4000/users`)
       .then((response) => {
-        console.log(response.data)
         setUsers(response.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   return (
-    <View className="">
+    <View className="flex items-center justify-center">
       <View className="flex-row items-center justify-start">
         <Image
           source={Images.userMale}
@@ -99,7 +98,7 @@ const MessageContact = () => {
         <Text className="text-2xl font-medium">{name} (You)</Text>
       </View>
       <TextInput
-        className="mt-4 px-2 py-1 w-full text-sm text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 border border-1"
+        className="mt-4 px-2 py-1 w-11/12 text-sm text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 border border-1"
         placeholder="Tìm kiếm ..."
         placeholderTextColor="gray"
         onChangeText={setQuerySearch}
@@ -138,15 +137,6 @@ const MessageContact = () => {
                           <Text className="text-xs font-normal">8h20</Text>
                         </View>
                       </View>
-                      {0 != 0 ? (
-                        <View className="mt-4 w-4 h-4 items-center justify-center bg-blue-600 rounded-full">
-                          <Text className="text-xs text-white">0</Text>
-                        </View>
-                      ) : (
-                        <View>
-                          <Text></Text>
-                        </View>
-                      )}
                     </View>
                   </View>
                 </TouchableOpacity>

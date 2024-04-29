@@ -17,7 +17,7 @@ export default NavBarSaler = () => {
   };
 
   const pressShop = () => {
-    navigation.navigate("NewDevice");
+    navigation.navigate("DeviceSale");
   };
 
   const pressChat = () => {

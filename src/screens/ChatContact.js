@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, TextInput, Button, Image } from "react-native";
+import { View, Text, FlatList, TextInput, Button, Image, TouchableOpacity } from "react-native";
 import io from "socket.io-client"; // Import io from socket.io-client
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { AntDesign } from "react-native-vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import { Images } from "../../assets";
 import { API_URL } from "../contexts";
 
@@ -13,7 +14,7 @@ const ChatContact = ({ route }) => {
   const [userIdSent, setUserIdSent] = useState("");
   const [userIdReceived, setUserIdReceived] = useState("");
   const [socket, setSocket] = useState(null);
-
+  const navigation = useNavigation();
   useEffect(() => {
     AsyncStorage.getItem("uid")
       .then((uid) => {
@@ -28,13 +29,13 @@ const ChatContact = ({ route }) => {
   useEffect(() => {
     const newSocket = io("http://10.0.2.2:4000");
     setSocket(newSocket);
-    fetchMessages();
 
     if (newSocket) {
       newSocket.on("newMessage", (message) => {
         setMessages((prevMessages) => [...prevMessages, message]);
       });
     }
+
     return () => {
       if (socket) {
         socket.disconnect();
@@ -42,18 +43,18 @@ const ChatContact = ({ route }) => {
     };
   }, []);
 
-  const fetchMessages = async () => {
-    try {
+  useEffect(() => {
+    fetchMessages();
+  }, [userIdReceived, userIdSent]);
+
+  const fetchMessages = () => {
+    if (userIdReceived && userIdSent) {
       axios
-        .get(
-          `http://10.0.2.2:4000/messages/${userIdSent}/${userIdReceived}`
-        )
+        .get(`http://10.0.2.2:4000/messages/${userIdSent}/${userIdReceived}`)
         .then((response) => {
           setMessages(response.data);
         })
         .catch((error) => console.log(error));
-    } catch (error) {
-      console.error("Error fetching messages:", error);
     }
   };
 
@@ -73,17 +74,22 @@ const ChatContact = ({ route }) => {
   };
 
   return (
-    <View style={{ flex: 1, padding: 20 }}>
+    <View style={{ flex: 1 }}>
       <View className="flex-row items-center justify-between mt-4">
-        <View className="flex-row items-start justify-center">
+        <View className="flex-row items-center justify-center mb-8">
+          <TouchableOpacity
+            onPress={() => navigation.navigate("MessageContact")}
+          >
+            <AntDesign name="left" size={24} className="mr-4 text-black" />
+          </TouchableOpacity>
           <Image
             source={Images.userMale}
             style={{ width: 52, height: 52 }}
             resizeMode="cover"
             className="h-32 rounded-lg object-cover my-1 mr-4"
           />
-          <View className="flex items-start justify-center">
-            <Text className="text-lg font-medium">Nguyễn Văn A</Text>
+          <View className="flex items-center justify-center">
+            <Text className="text-lg font-medium">{route.params.name}</Text>
           </View>
         </View>
       </View>
@@ -94,7 +100,8 @@ const ChatContact = ({ route }) => {
           <View
             style={{
               marginBottom: 10,
-              flexDirection: item.userId === userIdSent ? "row-reverse" : "row",
+              flexDirection:
+                item.userIdSent === userIdSent ? "row-reverse" : "row",
             }}
           >
             <View
@@ -113,18 +120,16 @@ const ChatContact = ({ route }) => {
       />
       <View style={{ flexDirection: "row", alignItems: "center" }}>
         <TextInput
-          style={{
-            flex: 1,
-            marginRight: 10,
-            borderWidth: 1,
-            borderColor: "#ccc",
-            padding: 8,
-          }}
+          className="flex-1 mr-4 border-2 border-gray-300 px-2 py-1 rounded-lg"
           placeholder="Type your message..."
           value={newMessageContent}
           onChangeText={setNewMessageContent}
         />
-        <Button title="Send" onPress={sendMessage} />
+        <Button
+          title="Send"
+          className="px-2 py-1 rounded-2xl"
+          onPress={sendMessage}
+        />
       </View>
     </View>
   );
