@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, Image,TouchableOpacity} from "react-native";
 import LottieView from 'lottie-react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
-import logo from "/../../assets/logo.png"
+import logo from "../../assets/logo.png"
 import homeJson from "../../assets/home_2.json";
 import { useNavigation } from '@react-navigation/native';
 export default Splash = () => {
