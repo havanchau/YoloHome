@@ -6,9 +6,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import UserManagement from "../screens/UserManagement";
 import ControlDevice from "../screens/ControlDevice";
-import InfoUserView from "../screens/InfoUserView";
+import InfoUserView from "../screens/InfoAdminView";
 import AccessDevice from "../screens/AccessDevice";
-
+import AccountInfo from "../screens/AccountInfo"
 import NavBarCustomer from "../components/NavBar/NavBarCustomer";
 
 const Tab = createBottomTabNavigator();
@@ -42,6 +42,12 @@ const CustomerStack = () => {
         component={AccessDevice}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="AccountInfo"
+        component={AccountInfo}
+        options={{ headerShown: false }}
+      />
+   
     </Stack.Navigator>
   );
 };

@@ -15,12 +15,12 @@ export default NavBarCustomer = () =>
     }
 
     const pressDev = () => {
-        navigation.navigate('HomeScreen');
+        navigation.navigate('UserManagement');
     }
 
 
     const pressAcc = () => {
-        navigation.navigate('Info');
+        navigation.navigate('InfoUserView');
     }
 
     const iconColor = (iconName) => {

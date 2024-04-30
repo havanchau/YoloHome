@@ -22,7 +22,7 @@ const Role = {
 
 const Main = () => {
   const isLoggedIn = true;
-  const user = "SALER";
+  const user = "CUSTOMER";
 
   return (
     <NavigationContainer theme={MyTheme}>
