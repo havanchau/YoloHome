@@ -1,11 +1,19 @@
 {
   "expo": {
+<<<<<<< HEAD
     "name": "yoloapp",
     "slug": "yoloapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "platforms": ["ios", "android"],
     "permissions": ["mediaLibrary"],
+=======
+    "name": "YoloHome",
+    "slug": "YoloHome",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+>>>>>>> dd145e4 (first commit)
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",

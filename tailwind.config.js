@@ -1,6 +1,10 @@
 // /** @type {import('tailwindcss').Config} */
 module.exports = {
+<<<<<<< HEAD
   content: ["./App.{js,jsx,ts,tsx}", "./src/**/**/*.{js,jsx,ts,tsx}", "./src/**/*.{js,jsx,ts,tsx}"],
+=======
+  content: ["./App.js", "./views/*.js","./assets/components/*.js"],
+>>>>>>> dd145e4 (first commit)
   theme: {
     extend: {
       colors:{
@@ -12,4 +16,9 @@ module.exports = {
     
   },
   plugins: [],
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> dd145e4 (first commit)
