@@ -61,6 +61,7 @@ const MessageContact = () => {
   const [users, setUsers] = useState(null);
   const [uid, setUid] = useState("");
   const [name, setName] = useState("");
+  connt [searchName, setSearchName] = useState("")
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -86,6 +87,10 @@ const MessageContact = () => {
       .catch((error) => console.log(error));
   }, []);
 
+  const handleFindPeopleByName = () => {
+
+  };
+
   return (
     <View className="flex items-center justify-center">
       <View className="flex-row items-center justify-start">
@@ -109,7 +114,10 @@ const MessageContact = () => {
       <View className="mt-12">
         {users &&
           users.map((user) => (
-            <View key={user._id} className="w-full flex items-center justify-center">
+            <View
+              key={user._id}
+              className="w-full flex items-center justify-center"
+            >
               {user._id != uid ? (
                 <TouchableOpacity
                   key={user._id}
@@ -133,8 +141,10 @@ const MessageContact = () => {
                           {user.fullname}
                         </Text>
                         <View className="flex-row items-center justify-between w-60">
-                          <Text className="text-base font-normal">Hello</Text>
-                          <Text className="text-xs font-normal">8h20</Text>
+                          <Text className="text-base font-normal">
+                            Chạm vào đây để xem
+                          </Text>
+                          <Text className="text-xs font-normal opacity-0"></Text>
                         </View>
                       </View>
                     </View>
