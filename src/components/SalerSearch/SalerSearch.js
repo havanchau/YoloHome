@@ -17,7 +17,6 @@ const SalerSearch = () => {
             <TouchableOpacity onPress={() => navigator.navigate("NewDevice")}>
                 <AntDesign name='plus' size={32} className="" />
             </TouchableOpacity>
-            <Feather name='user-plus' size={32} className="" />
         </View>
     )
 }
