@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import SalerSearch from "../components/SalerSearch/SalerSearch";
 import ProductCard from "../components/ProductCard/ProductCard";
 import { Images } from "../../assets/index";
-
+import { useDebounce } from "../utilities";
 
 const products = [
   {
-    id: '1',
+    id: "1",
     name: "Máy lạnh Toshiba 1HP",
     price: 2000000,
     content:
@@ -16,7 +17,7 @@ const products = [
     image: Images.airConditioning,
   },
   {
-    id: '2',
+    id: "2",
     name: "Đèn phòng thông minh",
     price: 1500000,
     content:
@@ -24,7 +25,7 @@ const products = [
     image: Images.light,
   },
   {
-    id: '3',
+    id: "3",
     name: "Đèn phòng thông minh",
     price: 1500000,
     content:
@@ -33,16 +34,45 @@ const products = [
   },
 ];
 
-
 const DeviceSale = () => {
+  const navigation = useNavigation();
+  const [searchDevices, setSearchDevices] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const debounceSearch = useDebounce(searchDevices, 500);
+
+  useEffect(() => {
+    if (!debounceSearch.trim()) {
+      setSearchResults([]);
+      return;
+    }
+
+    axios
+      .get(`http://10.0.2.2:4000/devicesalers`, {
+        params: {
+          name: debounceSearch,
+        },
+      })
+      .then((response) => setSearchResults(response.data))
+      .catch((error) => console.log(error));
+  }, [debounceSearch]);
+
   return (
     <View className="">
       <View className="flex items-center mb-8">
-        <SalerSearch />
+        <SalerSearch
+          setSearchDevices={setSearchDevices}
+          searchDevices={searchDevices}
+        />
       </View>
       <View className="flex items-center">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <TouchableOpacity
+            key={product.id}
+            onPress={() => navigation.navigate("ViewDeviceSaler")}
+          >
+            <ProductCard product={product} />
+          </TouchableOpacity>
         ))}
       </View>
     </View>
