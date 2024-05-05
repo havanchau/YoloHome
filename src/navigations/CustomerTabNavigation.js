@@ -5,10 +5,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "../screens/HomeScreen";
 import UserManagement from "../screens/UserManagement";
-import ControlDevice from "../screens/ControlDevice";
-import InfoUserView from "../screens/InfoAdminView";
-import AccessDevice from "../screens/AccessDevice";
-import AccountInfo from "../screens/AccountInfo"
+import ControlDevice from "../screens/customers/ControlDevice";
+import InfoUserView from "../screens/admins/InfoAdminView";
+import AccessDevice from "../screens/customers/AccessDevice";
+import AccountInfo from "../screens/shares/AccountInfo"
 import NavBarCustomer from "../components/NavBar/NavBarCustomer";
 
 const Tab = createBottomTabNavigator();

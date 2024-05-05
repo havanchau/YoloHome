@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TextInput,ToastAndroid,TouchableOpacity} from "react-native";
 
 import { styled, TailwindProvider } from 'tailwindcss-react-native';
@@ -10,8 +10,6 @@ export default ResetPassword = () => {
   const navigation = useNavigation();
   const [passwordVisible, setPasswordVisible] = useState(false); 
 
-  
-
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -21,16 +19,7 @@ export default ResetPassword = () => {
 
         <Text className='mb-5 font-bold text-3xl text-sky-400 '>Reset Password</Text>
         <Text className='mb-5 text-base'>Vui lòng nhập mật khẩu nào đó bạn sẽ nhớ.</Text>
-        {/* <Image 
-        source={logo}
-        className="w-[280] h-[140]"
-        />     */}
-        {/* <LottieView 
-        source={homeJson}
-        autoPlay
-        loop
-        style={{width: 350, height: 260}}
-        />            */}
+
         <View className='items-center'>
         <View className='mb-2'>
         <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-[350] pl-5 pr-40 py-3 text-left'

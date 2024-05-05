@@ -2,7 +2,8 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { View } from "react-native";
 
 import Main from "./src/screens/Main";
-import MessageContact from "./src/screens/MessageContact"
+import Login from "./src/screens/shares/Login"
+// import MessageContact from "./src/screens/MessageContact"
 
 import styles from "./src/styles/global.css";
 

@@ -3,11 +3,11 @@ import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import NewDevice from "../screens/NewDevice";
-import DeviceSale from "../screens/DeviceSale";
-import MessageContact from "../screens/MessageContact";
-import ChatContact from "../screens/ChatContact";
-import ViewDeviceSaler from "../screens/ViewDeviceSaler";
+import NewDevice from "../screens/salers/NewDevice";
+import DeviceSale from "../screens/salers/DeviceSale";
+import MessageContact from "../screens/shares/MessageContact";
+import ChatContact from "../screens/shares/ChatContact";
+import ViewDeviceSaler from "../screens/salers/ViewDeviceSaler";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
