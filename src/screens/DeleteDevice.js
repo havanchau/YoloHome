@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, TextInput, TouchableOpacity, Image} from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Image, ScrollView} from "react-native";
 import { Ionicons, Feather } from "react-native-vector-icons";
 
 import airCondition from "../../assets/airCondition.jpg"
 
 const DeleteDevice = () => {
     return (
-    <View className="w-full pt-10">
+    <ScrollView className="w-full">
         <View className="flex flex-row justify-between">
             <Ionicons
                 name="arrow-back-outline"
@@ -29,7 +29,7 @@ const DeleteDevice = () => {
             <View className="items-center">
                 <Image
                     source={airCondition} 
-                    style={{width:360, height:150}}
+                    style={{width:250, height:100}}
                 />
             </View>
             <View className="items-center">
@@ -37,7 +37,7 @@ const DeleteDevice = () => {
                     <Text className="font-bold">
                         Phòng
                     </Text>
-                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
+                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
                     value="Phòng ngủ A"
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -47,7 +47,7 @@ const DeleteDevice = () => {
                     <Text className="font-bold">
                         Hãng
                     </Text>
-                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
+                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
                     value="Panasonic"
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -57,7 +57,7 @@ const DeleteDevice = () => {
                     <Text className="font-bold">
                         Công suất
                     </Text>
-                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
+                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
                     value="810 - 1100W"
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -67,7 +67,7 @@ const DeleteDevice = () => {
                     <Text className="font-bold">
                         Thời gian hoạt động
                     </Text>
-                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
+                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
                     value="07 : 45 : 50"
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -77,7 +77,7 @@ const DeleteDevice = () => {
                     <Text className="font-bold">
                         Ngày bảo trì gần nhất
                     </Text>
-                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
+                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
                     value="16/02/2024"
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -87,7 +87,7 @@ const DeleteDevice = () => {
                     <Text className="font-bold">
                         Ngày bảo trì tiếp theo
                     </Text>
-                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
+                    <TextInput className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[310] pl-5 pr-40 py-3 text-left'
                     value="16/05/2024"
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -109,7 +109,7 @@ const DeleteDevice = () => {
                 </View>                
             </View>
         </View>
-    </View>
+    </ScrollView>
     );
 }
 
