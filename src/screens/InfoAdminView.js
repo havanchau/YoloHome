@@ -5,7 +5,6 @@ import AreaChart from "../components/AreaChart/AreaChart";
 import * as FileSystem from 'expo-file-system'
 import XLSX from 'xlsx';
 import * as Sharing from "expo-sharing"
-import userList from "./userList.js"
 import axios from 'axios';
 export default InfoAdminView = ({ route }) => {
   const { userId } = route.params;

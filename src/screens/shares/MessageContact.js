@@ -3,10 +3,10 @@ import { Text, View, Image, TextInput, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
-import { API_URL } from "../contexts";
+import { API_URL } from "../../contexts";
 
-import { Images } from "../../assets";
-import { useDebounce } from "../utilities";
+import { Images } from "../../../assets";
+import { useDebounce } from "../../utilities";
 
 const MessageContact = () => {
   const [users, setUsers] = useState(null);

@@ -4,10 +4,10 @@ import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 
-import SalerSearch from "../components/SalerSearch/SalerSearch";
-import ProductCard from "../components/ProductCard/ProductCard";
-import { Images } from "../../assets/index";
-import { useDebounce } from "../utilities";
+import SalerSearch from "../../components/SalerSearch/SalerSearch";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import { Images } from "../../../assets/index";
+import { useDebounce } from "../../utilities";
 
 const products = [
   {
