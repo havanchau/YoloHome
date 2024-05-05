@@ -30,19 +30,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
 import Splash from "./views/Splash";
-import Kitchen from "./views/Kitchen";
-import LivingRoom from "./views/LivingRoom";
-import BathRoom from "./views/BathRoom";
-import BedRoom from "./views/BedRoom";
-import infoQuat from "./views/infoQuat";
-import infoBepDien from "./views/infoBepDien";
-import infoDenChum from "./views/infoDenChum";
-import infoDenTran from "./views/infoDenTran";
-import infoTuLanh from "./views/infoTuLanh";
-import infoMayNongLanh from "./views/infoMayNongLanh";
-import infoDieuHoa from "./views/infoDieuHoa";
-import infoTivi from "./views/infoTivi";
-
+import Schedule from "./views/Schedule";
+import History from "./views/History";
+import infoFan from "./views/infoFan";
+import infoLight from "./views/infoLight";
+import infoSpeaker from "./views/infoSpeaker";
+import infoTemperatureSensor from "./views/infoTemperatureSensor";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,18 +44,12 @@ export default function App() {
     <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen name=" " component={Splash} />
-      <Stack.Screen name="Kitchen" component={Kitchen} />
-      <Stack.Screen name="LivingRoom" component={LivingRoom} />
-      <Stack.Screen name="BathRoom" component={BathRoom} />
-      <Stack.Screen name="BedRoom" component={BedRoom} />
-      <Stack.Screen name="infoQuat" component={infoQuat} />
-      <Stack.Screen name="infoBepDien" component={infoBepDien} />
-      <Stack.Screen name="infoDenChum" component={infoDenChum} /> 
-      <Stack.Screen name="infoDenTran" component={infoDenTran} />
-      <Stack.Screen name="infoTuLanh" component={infoTuLanh} />
-      <Stack.Screen name="infoMayNongLanh" component={infoMayNongLanh} /> 
-      <Stack.Screen name="infoDieuHoa" component={infoDieuHoa} />
-      <Stack.Screen name="infoTivi" component={infoTivi} />
+      <Stack.Screen name="Schedule" component={Schedule} />
+      <Stack.Screen name="History" component={History} />
+      <Stack.Screen name="infoFan" component={infoFan} />
+      <Stack.Screen name="infoLight" component={infoLight} />
+      <Stack.Screen name="infoSpeaker" component={infoSpeaker} />
+      <Stack.Screen name="infoTemperatureSensor" component={infoTemperatureSensor} />
     </Stack.Navigator>
     </NavigationContainer>
   );

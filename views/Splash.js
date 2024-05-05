@@ -8,25 +8,14 @@ import { useNavigation } from '@react-navigation/native';
 
 export default Splash = () => {
     const navigation = useNavigation();
-    const kitchenPress = () => {
+    const SchedulePress = () => {
         console.log("Button pressed");
-        navigation.navigate('Kitchen');
+        navigation.navigate('Schedule');
     };
-    const livingroomPress = () => {
+    const historyPress = () => {
         console.log("Button pressed");
-        navigation.navigate('LivingRoom');
+        navigation.navigate('History');
     };
-
-    const bedroomPress = () => {
-        console.log("Button pressed");
-        navigation.navigate('BedRoom');
-    };
-
-    const bathroomPress = () => {
-        console.log("Button pressed");
-        navigation.navigate('BathRoom');
-    };
-
 
 
     return (
@@ -44,11 +33,8 @@ export default Splash = () => {
           className="w-[100] h-[50]"
         />       
         <Text className='text-xl text-center text-bluebg font-medium'>Nhà không cần quá lớn  {'\n'} Chỉ cần chứa những gì bạn yêu</Text>
-        <TouchableOpacity onPress={kitchenPress} className='py-8 px-16 m-9 bg-bluebg rounded-3xl'><Text className='text-xl text-white'>Kitchen</Text></TouchableOpacity>
-        <TouchableOpacity onPress={livingroomPress} className='py-8 px-16 m-9 bg-bluebg rounded-3xl'><Text className='text-xl text-white'>Living Room</Text></TouchableOpacity>
-        <TouchableOpacity onPress={bathroomPress} className='py-8 px-16 m-9 bg-bluebg rounded-3xl'><Text className='text-xl text-white'>Bath Room</Text></TouchableOpacity>
-        <TouchableOpacity onPress={bedroomPress} className='py-8 px-16 m-9 bg-bluebg rounded-3xl'><Text className='text-xl text-white'>Bed Room</Text></TouchableOpacity>
-
+        <TouchableOpacity onPress={SchedulePress} className='py-8 px-16 m-9 bg-bluebg rounded-3xl'><Text className='text-xl text-white'>Quản lý lịch trình</Text></TouchableOpacity>
+        <TouchableOpacity onPress={historyPress} className='py-8 px-16 m-9 bg-bluebg rounded-3xl'><Text className='text-xl text-white'>Lịch sử hoạt động</Text></TouchableOpacity>
       </View>
     </TailwindProvider>
   );

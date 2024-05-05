@@ -7,37 +7,29 @@ export default UserManagement = () => {
   const navigation = useNavigation();
 
   const userList = [
-    
-    { id: 1, name: 'Đèn trần', status: 'Online', imageUri: 'https://quatviet.net/wp-content/uploads/2019/10/Den-trang-tri-TT5.gif' },
-    { id: 2, name: 'Máy Nóng Lạnh', status: 'Online', imageUri: 'https://empiregroup.com.vn/wp-content/uploads/2022/08/MAY-NUOC-NONG.jpg' },
+    { id: 1, name: 'Quạt', status: 'Online', imageUri: 'https://c.pxhere.com/photos/1d/04/electric_fan_wind_ceiling-946062.jpg!d'},
+    { id: 2, name: 'Đèn', status: 'Online', imageUri: 'https://quatviet.net/wp-content/uploads/2019/10/Den-trang-tri-TT5.gif' },
+    { id: 3, name: 'Loa', status: 'Online', imageUri: 'https://bizweb.dktcdn.net/100/444/272/products/panasonic-nr-tv261apsv-3-1.jpg?v=1640344856710' },
+    { id: 4, name: 'Cảm biến nhiệt', status: 'Online', imageUri: 'https://icdn.dantri.com.vn/oaKoww9ZmEdAys7kKq3tLCCQS3fXEK/Image/2015/04/4K-1-f964f.jpg' },
    
   ];
   const handlePress = (item) => {
     console.log("Button pressed", item.name);
     switch (item.name) {
       case 'Quạt':
-        navigation.navigate('infoQuat');
+        navigation.navigate('infoFan');
         break;
-      case 'Đèn trần':
-        navigation.navigate('infoDenTran');
+      case 'Đèn':
+        navigation.navigate('infoLight');
         break;
-      case 'Bếp điện':
-        navigation.navigate('infoBepDien');
-        break;
-      case 'Tủ lạnh':
-        navigation.navigate('infoTuLanh');
-        break;
-      case 'Đèn Chùm':
-        navigation.navigate('infoDenChum');
+      case 'Loa':
+        navigation.navigate('infoSpeaker');
         break;
       case 'Điều Hòa':
         navigation.navigate('infoDieuHoa');
         break;
-      case 'Máy Nóng Lạnh':
-        navigation.navigate('infoMayNongLanh');
-        break;
-      case 'Ti vi':
-        navigation.navigate('infoTivi');
+      case 'Cảm biến nhiệt':
+        navigation.navigate('infoTemperatureSensor');
         break;
       default:
         break;
