@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
-import { CORLOR } from "../../src/constants/index";
+import { CORLOR } from "../../../src/constants/index";
 import axios from "axios";
 
 const ViewDeviceSaler = ({ route }) => {
