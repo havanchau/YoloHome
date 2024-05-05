@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { View, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
 import SalerSearch from "../components/SalerSearch/SalerSearch";
 import ProductCard from "../components/ProductCard/ProductCard";
@@ -36,10 +38,20 @@ const products = [
 
 const DeviceSale = () => {
   const navigation = useNavigation();
+  const [devices, setDevices] = useState([]);
   const [searchDevices, setSearchDevices] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [uid, setUid] = useState("");
 
   const debounceSearch = useDebounce(searchDevices, 500);
+
+  useEffect(() => {
+    AsyncStorage.getItem("uid")
+      .then((uid) => {
+        setUid(uid);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   useEffect(() => {
     if (!debounceSearch.trim()) {
@@ -47,15 +59,35 @@ const DeviceSale = () => {
       return;
     }
 
-    axios
-      .get(`http://10.0.2.2:4000/devicesalers`, {
-        params: {
-          name: debounceSearch,
-        },
-      })
-      .then((response) => setSearchResults(response.data))
-      .catch((error) => console.log(error));
-  }, [debounceSearch]);
+    if (debounceSearch && uid) {
+      axios
+        .get(`http://10.0.2.2:4000/devicesalers`, {
+          params: {
+            name: debounceSearch,
+            userId: uid,
+          },
+        })
+        .then((response) => {
+          console.log(response.data);
+          setSearchResults(response.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [debounceSearch, uid]);
+
+  useEffect(() => {
+    if (uid) {
+      axios
+        .get(`http://10.0.2.2:4000/devicesalers/user/${uid}/devices`)
+        .then((response) => {
+          setDevices(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+          console.log(uid);
+        });
+    }
+  }, [uid]);
 
   return (
     <View className="">
@@ -66,14 +98,19 @@ const DeviceSale = () => {
         />
       </View>
       <View className="flex items-center">
-        {products.map((product) => (
-          <TouchableOpacity
-            key={product.id}
-            onPress={() => navigation.navigate("ViewDeviceSaler")}
-          >
-            <ProductCard product={product} />
-          </TouchableOpacity>
-        ))}
+        {devices &&
+          devices.map((device) => (
+            <TouchableOpacity
+              key={device._id}
+              onPress={() =>
+                navigation.navigate("ViewDeviceSaler", {
+                  device: device,
+                })
+              }
+            >
+              <ProductCard product={device} />
+            </TouchableOpacity>
+          ))}
       </View>
     </View>
   );

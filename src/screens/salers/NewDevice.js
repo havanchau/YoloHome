@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { Ionicons, Feather } from "react-native-vector-icons";
 import { CORLOR } from "../constants";
 import UploadImage from "../components/UploadImage/UploadImage";
 
@@ -18,13 +18,51 @@ const NewDevice = () => {
     amount: 0,
   });
   const [photo, setPhoto] = useState(null);
+  const [uid, setUid] = useState("");
 
-  const navigator = useNavigation();
+  const navigatiton = useNavigation();
 
+  useEffect(() => {
+    AsyncStorage.getItem("uid")
+      .then((uid) => {
+        setUid(uid);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const handleUploadImage = () => {
+    axios
+      .post(`http://10.0.2.2:4000/images/upload`, photo)
+      .then((response) => {
+        console.log(response);
+        setDeviceInfo((prevState) => ({
+          ...prevState,
+          image: response.data.url,
+        }));
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleAddNewDeviceInformation = () => {
+    const device = {
+      userId: uid,
+      amount: deviceInfo.amount,
+      price: deviceInfo.price,
+      discount: deviceInfo.discount,
+      information: {
+        name: deviceInfo.name,
+        image: deviceInfo.image,
+        describe: deviceInfo.content,
+        type: deviceInfo.type,
+        power: deviceInfo.power,
+      },
+    };
 
-  } 
+    axios
+      .post(`http://10.0.2.2:4000/devicesalers`, device)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
 
   return (
     <View className={`mx-4 bg-${CORLOR.white}`}>
@@ -55,7 +93,9 @@ const NewDevice = () => {
 
       <View className="">
         <View className="flex-row items-center mt-1 h-10">
-          <Text className="text-lg font-semibold text-black">Mô tả sản phẩm</Text>
+          <Text className="text-lg font-semibold text-black">
+            Mô tả sản phẩm
+          </Text>
         </View>
         <View className="">
           <TextInput
@@ -74,7 +114,9 @@ const NewDevice = () => {
 
       <View className="">
         <View className="flex-row items-center mt-1 h-10">
-          <Text className="text-lg font-semibold text-black">Loại thiết bị</Text>
+          <Text className="text-lg font-semibold text-black">
+            Loại thiết bị
+          </Text>
         </View>
         <View className="">
           <TextInput
@@ -93,7 +135,9 @@ const NewDevice = () => {
 
       <View className="">
         <View className="flex-row items-center mt-1 h-10">
-          <Text className="text-lg font-semibold text-black">Năng lượng tiêu thụ</Text>
+          <Text className="text-lg font-semibold text-black">
+            Năng lượng tiêu thụ
+          </Text>
         </View>
         <View className="">
           <TextInput
@@ -150,7 +194,9 @@ const NewDevice = () => {
 
       <View className=" mb-2">
         <View className="flex-row items-center mt-1 h-10">
-          <Text className="text-lg font-semibold text-black">Số lượng thiết bị</Text>
+          <Text className="text-lg font-semibold text-black">
+            Số lượng thiết bị
+          </Text>
         </View>
         <View className="">
           <TextInput
@@ -170,7 +216,11 @@ const NewDevice = () => {
       <UploadImage photo={photo} setPhoto={setPhoto} title="Add new image" />
 
       <TouchableOpacity
-        onPress={() => navigator.navigate("DeviceSale")}
+        onPress={() => {
+          handleUploadImage();
+          handleAddNewDeviceInformation();
+          // navigator.navigate("DeviceSale");
+        }}
         className="w-full h-12 items-center flex bg-blue-700 justify-center rounded-xl mt-8"
       >
         <Text className="text-lg font-semibold text-black">Xác nhận</Text>
@@ -178,6 +228,7 @@ const NewDevice = () => {
 
       <TouchableOpacity
         className="w-full h-12 items-center flex bg-gray-400 justify-center rounded-xl mt-4"
+        onPress={() => navigatiton.navigate("DeviceSale")}
       >
         <Text className="text-lg font-semibold text-black">Hủy</Text>
       </TouchableOpacity>
