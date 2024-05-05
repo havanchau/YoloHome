@@ -1,5 +1,4 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -8,6 +7,7 @@ import DeviceSale from "../screens/salers/DeviceSale";
 import MessageContact from "../screens/shares/MessageContact";
 import ChatContact from "../screens/shares/ChatContact";
 import ViewDeviceSaler from "../screens/salers/ViewDeviceSaler";
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

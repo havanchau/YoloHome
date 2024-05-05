@@ -5,8 +5,8 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AntDesign } from "react-native-vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { Images } from "../../assets";
-import { API_URL } from "../contexts";
+import { Images } from "../../../assets";
+import { API_URL } from "../../contexts";
 
 const ChatContact = ({ route }) => {
   const [messages, setMessages] = useState([]);
