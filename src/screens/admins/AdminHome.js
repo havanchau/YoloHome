@@ -4,7 +4,7 @@ import * as FileSystem from 'expo-file-system'
 import XLSX from 'xlsx';
 import * as Sharing from "expo-sharing"
 import axios from 'axios';
-import logo from "../../assets/logo.png"
+import logo from "../../../assets/logo.png"
 
 const AdminHome = () => {
   const [totalUsers, setTotalUsers] = useState(0);

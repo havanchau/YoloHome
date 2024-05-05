@@ -4,8 +4,8 @@ import LottieView from "lottie-react-native";
 import { TailwindProvider } from "tailwindcss-react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import logo from "../../assets/logo.png";
-import homeJson from "../../assets/home_1.json";
+import logo from "../../../assets/logo.png";
+import homeJson from "../../../assets/home_1.json";
 
 export default Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
