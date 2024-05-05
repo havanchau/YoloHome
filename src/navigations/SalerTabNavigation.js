@@ -5,7 +5,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import NewDevice from "../screens/NewDevice";
 import DeviceSale from "../screens/DeviceSale";
-import NavBarCustomer from "../components/NavBar/NavBarCustomer";
+import MessageContact from "../screens/MessageContact";
+import ChatContact from "../screens/ChatContact";
+import ViewDeviceSaler from "../screens/ViewDeviceSaler";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -23,6 +25,21 @@ const SalerStack = () => {
         component={DeviceSale}
         options={{ headerShown: false }}
       />
+      <Stack.Screen
+        name="MessageContact"
+        component={MessageContact}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ChatContact"
+        component={ChatContact}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ViewDeviceSaler"
+        component={ViewDeviceSaler}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
@@ -36,7 +53,6 @@ const SalerTabNavigator = () => {
       }}
     >
       <Stack.Screen name="Home" component={SalerStack} />
-      
     </Stack.Navigator>
   );
 };
