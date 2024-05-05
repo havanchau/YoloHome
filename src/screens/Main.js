@@ -7,6 +7,7 @@ import AdminTabNavigator from "../navigations/AdminNavigation"
 import NavbarCustomer from "../components/NavBar/NavBarCustomer";
 import NavbarSaler from "../components/NavBar/NavBarSaler";
 import NavBarAdmin from "../components/NavBar/NavBarAdmin"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const MyTheme = {
   ...DefaultTheme,
   colors: {
@@ -23,7 +24,9 @@ const Role = {
 
 const Main = () => {
   const isLoggedIn = true;
-  const user = "ADMIN";
+  const user = "SALER";
+  AsyncStorage.setItem("uid", "662c708b0ea5b75e861d8d1c");
+  AsyncStorage.setItem("name", "Ha Van Chau");
 
   return (
     <NavigationContainer theme={MyTheme}>

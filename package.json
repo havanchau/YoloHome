@@ -46,6 +46,7 @@
     "socket.io-client": "^4.7.5",
     "tailwindcss-react-native": "^1.7.10",
     "xlsx": "^0.18.5"
+
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
