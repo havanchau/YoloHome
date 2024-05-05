@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import HomeScreen from "../screens/HomeScreen";
-import UserManagement from "../screens/UserManagement";
+import UserManagement from "../screens/admins/UserManagement";
 import ControlDevice from "../screens/customers/ControlDevice";
 import InfoUserView from "../screens/admins/InfoAdminView";
 import AccessDevice from "../screens/customers/AccessDevice";

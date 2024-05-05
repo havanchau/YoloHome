@@ -6,7 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Login from "../screens/shares/Login";
 import Register from "../screens/shares/Register";
 import ResetPassword from "../screens/shares/ResetPassword";
-import Splash from "../screens/Splash";
+import Splash from "../screens/shares/Splash";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

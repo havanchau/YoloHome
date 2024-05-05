@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Image, TouchableOpacity, ScrollView, PermissionsAndroid } from "react-native";
 import { Feather, Entypo } from 'react-native-vector-icons';
-import AreaChart from "../components/AreaChart/AreaChart.js";
+import AreaChart from "../../components/AreaChart/AreaChart.js";
 import * as FileSystem from 'expo-file-system'
 import XLSX from 'xlsx';
 import * as Sharing from "expo-sharing"
-// import userList from "../userList.js"
 import axios from 'axios';
 export default InfoUserView = ({ route }) =>
     
