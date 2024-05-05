@@ -6,11 +6,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import UserManagement from "../screens/UserManagement";
 import ControlDevice from "../screens/ControlDevice";
-import InfoUserView from "../screens/InfoAdminView";
+import InfoUserView from "../screens/InfoUserView";
+import InfoAdminView from "../screens/InfoAdminView";
 import AccessDevice from "../screens/AccessDevice";
 import AccountInfo from "../screens/AccountInfo"
-import NavBarCustomer from "../components/NavBar/NavBarCustomer";
-
+import AdminHome from "../screens/AdminHome"
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -19,7 +19,7 @@ const CustomerStack = () => {
     <Stack.Navigator>
       <Stack.Screen
         name="HomeScreen"
-        component={HomeScreen}
+        component={AdminHome}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -28,13 +28,13 @@ const CustomerStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="ControlDevice"
-        component={ControlDevice}
+        name="InfoUserView"
+        component={InfoUserView}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="InfoUserView"
-        component={InfoUserView}
+        name="InfoAdminView"
+        component={InfoAdminView}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -53,7 +53,7 @@ const CustomerStack = () => {
 };
 
 
-const CustomerTabNavigator = () => {
+const AdminTabNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -66,4 +66,4 @@ const CustomerTabNavigator = () => {
   );
 };
 
-export default CustomerTabNavigator;
+export default AdminTabNavigator;
