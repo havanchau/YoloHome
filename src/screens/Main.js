@@ -3,14 +3,15 @@ import { View } from "react-native";
 import CustomerTabNavigator from "../navigations/CustomerTabNavigation";
 import SalerTabNavigator from "../navigations/SalerTabNavigation";
 import AuthNavigator from "../navigations/AuthNavigation";
+import AdminTabNavigator from "../navigations/AdminNavigation"
 import NavbarCustomer from "../components/NavBar/NavBarCustomer";
 import NavbarSaler from "../components/NavBar/NavBarSaler";
-
+import NavBarAdmin from "../components/NavBar/NavBarAdmin"
 const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: "white", // Thiết lập màu nền của NavigationContainer
+    background: "white",
   },
 };
 
@@ -22,26 +23,35 @@ const Role = {
 
 const Main = () => {
   const isLoggedIn = true;
-  const user = "CUSTOMER";
+  const user = "ADMIN";
 
   return (
     <NavigationContainer theme={MyTheme}>
       {isLoggedIn ? (
-        user == "CUSTOMER" ? (
-          <>
-            <CustomerTabNavigator />
-            <View className="">
-              <NavbarCustomer />
-            </View>
-          </>
-        ) : (
-          <>
-            <SalerTabNavigator />
-            <View className="">
-              <NavbarSaler />
-            </View>
-          </>
-        )
+        <>
+          {user === Role.customer ? (
+            <>
+              <CustomerTabNavigator />
+              <View className="">
+                <NavbarCustomer />
+              </View>
+            </>
+          ) : user === Role.saler ? (
+            <>
+              <SalerTabNavigator />
+              <View className="">
+                <NavbarSaler />
+              </View>
+            </>
+          ) : user === Role.admin ? (
+            <>
+              <AdminTabNavigator />
+              <View className="">
+                <NavBarAdmin />
+              </View>
+            </>
+          ) : null}
+        </>
       ) : (
         <AuthNavigator />
       )}

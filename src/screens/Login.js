@@ -18,7 +18,7 @@ export default Login = () => {
     navigation.navigate('User Management');
   };
   return (
-      <View className='flex-1 items-center pb-10 pt-10 w-screen'>
+      <View className='flex-1 items-center pb-10 pt-10 w-full'>
         <Text className='font-bold text-2xl'>Welcome back!</Text>
         <Image 
           source={logo}

@@ -1,36 +1,47 @@
-// import { AreaChart } from "react-native-svg-charts";
-// import { View } from "react-native";
-// import { Dimensions } from "react-native";
-// import {
-//   LineChart,
-//   BarChart,
-//   PieChart,
-//   ProgressChart,
-//   ContributionGraph,
-//   StackedBarChart
-// } from "react-native-chart-kit";
+import React from 'react';
+import { View, Text } from 'react-native';
+import { LineChart } from 'react-native-chart-kit';
+import { Dimensions } from 'react-native';
 
-// export default AreaChart = () =>
-// {   const screenWidth = Dimensions.get("window").width;
-//     const data = {
-//         labels: ["January", "February", "March", "April", "May", "June"],
-//         datasets: [
-//           {
-//             data: [20, 45, 28, 80, 99, 43],
-//             color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-//             strokeWidth: 2 // optional
-//           }
-//         ],
-//         legend: ["Rainy Days"] // optional
-//       };
-//     return(
-//         <View>
-//             <LineChart
-//             data={data}
-//             width={screenWidth}
-//             height={220}
-//             chartConfig={chartConfig}
-//             />
-//         </View>
-//     );
-// }
+export default AreaChart = () => {
+  return (
+    <View>
+      <LineChart
+        data={{
+          labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sun","Sat"],
+          datasets: [
+            {
+              data: [
+                1, 3, 1, 2, 4, 5, 4
+              ]
+            }
+          ]
+        }}
+        width={Dimensions.get("window").width * 5/6} 
+        height={220}
+        yAxisInterval={1}
+        chartConfig={{
+          backgroundColor: "white", 
+          backgroundGradientFrom: "#ffffff", 
+          backgroundGradientTo: "#ffffff", 
+          decimalPlaces: 0, 
+          color: (opacity = 1) => `rgba(0, 0, 255, ${opacity})`, 
+          labelColor: (opacity = 1) => `rgba(0, 0, 255, ${opacity})`, 
+          style: {
+            borderRadius: 16
+          },
+          propsForDots: {
+            r: "6",
+            strokeWidth: "2",
+            stroke: "#ffa726"
+          }
+        }}
+        bezier
+        style={{
+          marginVertical: 8,
+          borderRadius: 16
+        }}
+      />
+    </View>
+  )
+}
