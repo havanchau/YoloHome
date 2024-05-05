@@ -3,14 +3,12 @@ import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import HomeScreen from "../screens/HomeScreen";
-import UserManagement from "../screens/UserManagement";
-import ControlDevice from "../screens/ControlDevice";
-import InfoUserView from "../screens/InfoUserView";
-import InfoAdminView from "../screens/InfoAdminView";
+import UserManagement from "../screens/admins/UserManagement";
+import InfoUserView from "../screens/shares/InfoUserView";
+import InfoAdminView from "../screens/admins/InfoAdminView";
 import AccessDevice from "../screens/AccessDevice";
 import AccountInfo from "../screens/AccountInfo"
-import AdminHome from "../screens/AdminHome"
+import AdminHome from "../screens/admins/AdminHome"
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
