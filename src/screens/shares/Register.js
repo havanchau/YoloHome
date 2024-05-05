@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { View, Text, TextInput,Image,TouchableOpacity} from "react-native";
 import LottieView from 'lottie-react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
 import { useNavigation } from '@react-navigation/native';
 import RNPickerSelect from 'react-native-picker-select';
-import homeJson from "../../assets/home_1.json";
+import homeJson from "../../../assets/home_1.json";
 
 export default Register = () => {
   const [passwordVisible, setPasswordVisible] = useState(false); 
@@ -23,14 +23,13 @@ export default Register = () => {
     setSelectedOption(value);
     setHouseId(''); // Reset houseId when option changes
   };
+
+  
   return (
     <TailwindProvider>
       <View className='flex-1 items-center pb-10 pt-5'>
         <Text className='font-bold text-3xl text-sky-400'>Sign up</Text>
-        {/* <Image 
-          source={logo}
-          className="w-[280] h-[140]"
-        />     */}
+
         <LottieView 
           source={homeJson}
           autoPlay
