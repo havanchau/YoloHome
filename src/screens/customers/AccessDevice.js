@@ -28,12 +28,22 @@ export default AccessDevice = () => {
     { id: 5, name: "Television", status: "Running", imageUri: television },
   ];
 
+  const handleDevicePress = (deviceId) => {
+    if (deviceId === 2) { // ID của thiết bị "Light"
+      navigation.navigate("infoDenTran"); // Chuyển hướng đến màn hình infoDenTran.js
+    }
+    if (deviceId === 4) { // ID của thiết bị "Quat"
+      navigation.navigate("infoQuat"); // Chuyển hướng đến màn hình infoQuat.js
+    }
+  };
+  
   return (
     <TailwindProvider>
       <View className="flex-1 items-center pb-10 pt-10">
         <ScrollView>
           {deviceList.map((device, index) => (
-            <View key={index} className="mb-2">
+            <View key={index} className="mb-2"> 
+              <TouchableOpacity onPress={() => handleDevicePress(device.id)}>
               <View className="flex flex-row w-[360] h-[80]  border border-gray-300 rounded-xl bg-white items-center content-center">
                 <View className="w-[310] h-[80] flex flex-row place-content-center">
                   <Image
@@ -51,6 +61,7 @@ export default AccessDevice = () => {
                   <Image source={trash} className="w-[30] h-[30]" />
                 </TouchableOpacity>
               </View>
+              </TouchableOpacity>
             </View>
           ))}
         </ScrollView>

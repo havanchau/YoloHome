@@ -8,6 +8,7 @@ import NavbarCustomer from "../components/NavBar/NavBarCustomer";
 import NavbarSaler from "../components/NavBar/NavBarSaler";
 import NavBarAdmin from "../components/NavBar/NavBarAdmin"
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 const MyTheme = {
   ...DefaultTheme,
   colors: {
@@ -23,10 +24,48 @@ const Role = {
 };
 
 const Main = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   const user = "CUSTOMER";
-  AsyncStorage.setItem("uid", "662c708b0ea5b75e861d8d1c");
-  AsyncStorage.setItem("name", "Ha Van Chau");
+  AsyncStorage.setItem("uid", "66390aafa721d4b54d0e8188");
+  AsyncStorage.setItem("name", "Nguyen Thanh Liem");  
+
+
+
+const axios = require('axios');
+
+const uri = 'https://cluster0.tctbbi8.mongodb.net/';
+const dbName = 'PROJECT 0';
+const collectionName = 'test';
+const documentId = '66390aafa721d4b54d0e8188';
+
+async function connectAndQuery() {
+  try {
+    const response = await axios.get(`${uri}databases/${dbName}/collections/${collectionName}/${documentId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer 596431', // Thay YOUR_ACCESS_TOKEN bằng mã truy cập của bạn
+      },
+    });
+
+    const document = response.data;
+    if (document) {
+      const adaKey = document.ada_key;
+      console.log('ada_key:', adaKey);
+    } else {
+      console.log('Document not found');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+connectAndQuery();
+
+
+
+
+
+
 
   return (
     <NavigationContainer theme={MyTheme}>
@@ -62,3 +101,7 @@ const Main = () => {
   );
 };
 export default Main;
+
+
+
+

@@ -10,6 +10,8 @@ import InfoUserView from "../screens/admins/InfoAdminView";
 import AccessDevice from "../screens/customers/AccessDevice";
 import AccountInfo from "../screens/shares/AccountInfo"
 import NavBarCustomer from "../components/NavBar/NavBarCustomer";
+import infoDenTran from "../screens/infoDenTran";
+import infoQuat from "../screens/infoQuat";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -47,7 +49,17 @@ const CustomerStack = () => {
         component={AccountInfo}
         options={{ headerShown: false }}
       />
-   
+      <Stack.Screen
+        name="infoDenTran"
+        component={infoDenTran}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="infoQuat"
+        component={infoQuat}
+        options={{ headerShown: false }}
+      />
+
     </Stack.Navigator>
   );
 };
