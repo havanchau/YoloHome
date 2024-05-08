@@ -66,14 +66,14 @@ const NewDevice = () => {
 
   return (
     <View className={`mx-4 bg-${CORLOR.white}`}>
-      <View className="flex items-center justify-center mt-8 h-16 rounded-t-3xl">
+      <View className="flex items-center justify-center mt-4 h-16 rounded-t-3xl">
         <Text className="px-2 text-2xl font-medium mb-1 text-black">
           Thêm sản phẩm mới
         </Text>
       </View>
 
       <View className="">
-        <View className="flex-row items-center mt-4 h-10">
+        <View className="flex-row items-center mt-2 h-10">
           <Text className="text-lg font-semibold text-black">Tên sản phẩm</Text>
         </View>
         <View className="">
@@ -219,7 +219,7 @@ const NewDevice = () => {
         onPress={() => {
           handleUploadImage();
           handleAddNewDeviceInformation();
-          // navigator.navigate("DeviceSale");
+          navigator.navigate("DeviceSale");
         }}
         className="w-full h-12 items-center flex bg-blue-700 justify-center rounded-xl mt-8"
       >

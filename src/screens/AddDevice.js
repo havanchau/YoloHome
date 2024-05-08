@@ -6,7 +6,7 @@ import lockDoor from "../../assets/lockDoor.jpg"
 
 const AddDevice = () => {
     return (
-    <View className="w-full pt-10">
+    <View className="w-full">
         <View className="flex flex-row justify-between">
             <Ionicons
                 name="arrow-back-outline"
@@ -23,7 +23,7 @@ const AddDevice = () => {
             />
         </View>
         <View className="flex flex-row px-8">
-            <View className="basis-1/4 flex flex-col space-y-4">
+            <View className="basis-1/4 space-y-4">
                 <Text>
                     Thiết bị điện
                 </Text>
@@ -56,16 +56,17 @@ const AddDevice = () => {
                 </Text>
             </View>
             <View className="basis-3/4">
-                <View className="flex felx-col space-y-2 items-center">
-                    <Image 
-                        source={lockDoor}
-                        className="w-[100] h-[50]"
-                    />
-                    <Text className="">
-                        Khóa cửa
-                    </Text>
+                <View className="flex flex-row">
+                    <View className="" style={{width: 100}}>
+                        <Image 
+                            source={lockDoor}
+                            className="w-[100] h-[50]"
+                        />
+                        <Text className="text-center">
+                            Khóa cửa
+                        </Text>
+                    </View>
                 </View>
-                
             </View>
         </View>
     </View>
