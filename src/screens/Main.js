@@ -26,12 +26,14 @@ const Role = {
 
 const Main = () => {
   const [user, setUser] = useState(null);
-
+  const [isLogin,setIsLogin]=useState("false")
   useEffect(() => {
     const getUserRole = async () => {
       try {
         const userRole = await AsyncStorage.getItem("userRole");
+        const log= await AsyncStorage.getItem("isLoggedIn");
         setUser(userRole);
+        setIsLogin(log)
       } catch (error) {
         console.error("Error getting user role:", error);
       }
@@ -43,34 +45,63 @@ const Main = () => {
   return (
     <>
       {user === null ? (
-
         <View>
           <Text>Loading...</Text>
         </View>
       ) : (
         <>
-          {user === Role.customer ? (
+          {isLogin==="true" && (
             <>
-              <CustomerTabNavigator />
-              <View className="">
-                <NavbarCustomer />
-              </View>
+              {user === Role.customer ? (
+                <>
+                  <CustomerTabNavigator />
+                  <View className="">
+                    <NavbarCustomer />
+                  </View>
+                </>
+              ) : user === Role.saler ? (
+                <>
+                  <SalerTabNavigator />
+                  <View className="">
+                    <NavbarSaler />
+                  </View>
+                </>
+              ) : user === Role.admin ? (
+                <>
+                  <AdminTabNavigator />
+                  <View className="">
+                    <NavBarAdmin />
+                  </View>
+                </>
+              ) : null}
             </>
-          ) : user === Role.saler ? (
+          )}
+          {isLogin=="false" && (
             <>
-              <SalerTabNavigator />
-              <View className="">
-                <NavbarSaler />
-              </View>
+              {user === Role.customer ? (
+                <>
+                  <CustomerTabNavigator />
+                  {/* <View className="">
+                    <NavbarCustomer />
+                  </View> */}
+                </>
+              ) : user === Role.saler ? (
+                <>
+                  <SalerTabNavigator />
+                  {/* <View className="">
+                    <NavbarSaler />
+                  </View> */}
+                </>
+              ) : user === Role.admin ? (
+                <>
+                  <AdminTabNavigator />
+                  {/* <View className="">
+                    <NavBarAdmin />
+                  </View> */}
+                </>
+              ) : null}
             </>
-          ) : user === Role.admin ? (
-            <>
-              <AdminTabNavigator />
-              <View className="">
-                <NavBarAdmin />
-              </View>
-            </>
-          ) : null}
+          )} 
         </>
       )}
     </>
