@@ -1,13 +1,15 @@
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
-import { View } from "react-native";
+import { View,Text } from "react-native";
+import React, { useEffect, useState } from "react";
 import CustomerTabNavigator from "../navigations/CustomerTabNavigation";
 import SalerTabNavigator from "../navigations/SalerTabNavigation";
 import AuthNavigator from "../navigations/AuthNavigation";
-import AdminTabNavigator from "../navigations/AdminNavigation"
+import AdminTabNavigator from "../navigations/AdminNavigation";
 import NavbarCustomer from "../components/NavBar/NavBarCustomer";
 import NavbarSaler from "../components/NavBar/NavBarSaler";
-import NavBarAdmin from "../components/NavBar/NavBarAdmin"
+import NavBarAdmin from "../components/NavBar/NavBarAdmin";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 const MyTheme = {
   ...DefaultTheme,
   colors: {
@@ -17,20 +19,35 @@ const MyTheme = {
 };
 
 const Role = {
-  admin: "ADMIN",
-  customer: "CUSTOMER",
-  saler: "SALER",
+  admin: "admin",
+  customer: "customer",
+  saler: "saler",
 };
 
 const Main = () => {
-  const isLoggedIn = false;
-  const user = "CUSTOMER";
-  AsyncStorage.setItem("uid", "662c708b0ea5b75e861d8d1c");
-  AsyncStorage.setItem("name", "Ha Van Chau");
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const getUserRole = async () => {
+      try {
+        const userRole = await AsyncStorage.getItem("userRole");
+        setUser(userRole);
+      } catch (error) {
+        console.error("Error getting user role:", error);
+      }
+    };
+
+    getUserRole();
+  }, []); 
 
   return (
-    <NavigationContainer theme={MyTheme}>
-      {isLoggedIn ? (
+    <>
+      {user === null ? (
+
+        <View>
+          <Text>Loading...</Text>
+        </View>
+      ) : (
         <>
           {user === Role.customer ? (
             <>
@@ -55,10 +72,9 @@ const Main = () => {
             </>
           ) : null}
         </>
-      ) : (
-        <AuthNavigator />
       )}
-    </NavigationContainer>
+    </>
   );
 };
+
 export default Main;
