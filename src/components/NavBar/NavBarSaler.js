@@ -26,9 +26,9 @@ export default NavBarSaler = () => {
   const navigation = useNavigation();
   const [selectedIcon, setSelectedIcon] = useState(null);
 
-  const pressHome = () => {
-    navigation.navigate("Splash");
-  };
+  // const pressHome = () => {
+  //   navigation.navigate("Splash");
+  // };
 
   const pressShop = () => {
     navigation.navigate("DeviceSale");
@@ -47,9 +47,9 @@ export default NavBarSaler = () => {
   };
   return (
     <View className="flex flex-row grow justify-between">
-      <TouchableOpacity onPress={pressHome} className="mr-4">
+      {/* <TouchableOpacity onPress={pressHome} className="mr-4">
         <Entypo className="text-blue-900" name="home" size={40} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity onPress={pressShop} className="mr-4">
         <Entypo className="text-blue-900" name="shop" size={40} />
       </TouchableOpacity>

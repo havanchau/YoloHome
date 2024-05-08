@@ -5,6 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { CORLOR } from "../../constants";
 import UploadImage from "../../components/UploadImage/UploadImage";
+import axios from "axios";
 
 const NewDevice = () => {
   const [deviceInfo, setDeviceInfo] = useState({
@@ -23,7 +24,7 @@ const NewDevice = () => {
   const navigatiton = useNavigation();
 
   useEffect(() => {
-    AsyncStorage.getItem("uid")
+    AsyncStorage.getItem("ID")
       .then((uid) => {
         setUid(uid);
       })
@@ -32,7 +33,7 @@ const NewDevice = () => {
 
   const handleUploadImage = () => {
     axios
-      .post(`http://10.0.2.2:4000/images/upload`, photo)
+      .post(`${process.env.API_URL}/images/upload`, photo)
       .then((response) => {
         console.log(response);
         setDeviceInfo((prevState) => ({
@@ -51,7 +52,7 @@ const NewDevice = () => {
       discount: deviceInfo.discount,
       information: {
         name: deviceInfo.name,
-        image: deviceInfo.image,
+        image: '',
         describe: deviceInfo.content,
         type: deviceInfo.type,
         power: deviceInfo.power,
@@ -60,7 +61,7 @@ const NewDevice = () => {
 
     axios
       .post(`http://10.0.2.2:4000/devicesalers`, device)
-      .then((response) => console.log(response))
+      .then((response) => console.log(response.data))
       .catch((error) => console.log(error));
   };
 
@@ -213,13 +214,13 @@ const NewDevice = () => {
         </View>
       </View>
 
-      <UploadImage photo={photo} setPhoto={setPhoto} title="Add new image" />
+      {/* <UploadImage photo={photo} setPhoto={setPhoto} title="Add new image" /> */}
 
       <TouchableOpacity
         onPress={() => {
-          handleUploadImage();
+          // handleUploadImage();
           handleAddNewDeviceInformation();
-          navigator.navigate("DeviceSale");
+          // navigator.navigate("DeviceSale");
         }}
         className="w-full h-12 items-center flex bg-blue-700 justify-center rounded-xl mt-8"
       >

@@ -7,6 +7,7 @@ import { API_URL } from "../../contexts";
 
 import { Images } from "../../../assets";
 import { useDebounce } from "../../utilities";
+import { err } from "react-native-svg";
 
 const MessageContact = () => {
   const [users, setUsers] = useState(null);
@@ -35,17 +36,20 @@ const MessageContact = () => {
   }, [debounceSearch]);
 
   useEffect(() => {
-    AsyncStorage.getItem("name")
-      .then((name) => {
-        setName(name);
-      })
-      .catch((error) => console.log(error));
-
-    AsyncStorage.getItem("uid")
+    AsyncStorage.getItem("ID")
       .then((uid) => {
         setUid(uid);
       })
       .catch((error) => console.log(error));
+
+    if (uid) {
+      axios
+        .get(`http://10.0.2.2:4000/users/${uid}`)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => console.log(error));
+    }
   }, []);
 
   useEffect(() => {
@@ -59,14 +63,16 @@ const MessageContact = () => {
 
   return (
     <View className="flex items-center justify-center">
-      <View className="flex-row items-center justify-start">
-        <Image
-          source={Images.userMale}
-          style={{ width: 60, height: 60 }}
-          resizeMode="cover"
-          className="h-32 rounded-lg object-cover my-1 mr-4"
-        />
-        <Text className="text-2xl font-medium">{name} (You)</Text>
+      <View>
+        <View className="flex-row items-center justify-start">
+          <Image
+            source={Images.userMale}
+            style={{ width: 60, height: 60 }}
+            resizeMode="cover"
+            className="h-32 rounded-lg object-cover my-1 mr-4"
+          />
+          <Text className="text-2xl font-medium">{name} (You)</Text>
+        </View>
       </View>
       <View className="w-full flex-row items-center justify-center relative">
         <TextInput

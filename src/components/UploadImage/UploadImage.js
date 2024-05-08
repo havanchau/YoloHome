@@ -46,6 +46,8 @@ const UploadImage = ({ photo, setPhoto, title }) => {
         setPhoto(null);
       }
 
+      console.log(result)
+
     } catch (error) {
       console.log('Error selecting image:', error);
     }
@@ -58,6 +60,8 @@ const UploadImage = ({ photo, setPhoto, title }) => {
     }
 
     const formData = createFormData(photo, { userId: '123' });
+
+    // console.log(photo);
 
     try {
       const response = await fetch(`${SERVER_URL}/api/upload`, {
