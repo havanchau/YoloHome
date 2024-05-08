@@ -20,21 +20,20 @@ export default Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://192.168.154.235:4000/users/login', {
+      const response = await axios.post(`http://10.0.2.2:4000/users/login`, {
         email: email,
         password: password
       });
       user=response.data.role
-      console.log(response)
       AsyncStorage.setItem("isLoggedIn", "true");
       if (user ==="saler")  AsyncStorage.setItem("userRole", "saler"); 
       if (user ==="user")  AsyncStorage.setItem("userRole", "customer"); 
       if (user ==="customer")  AsyncStorage.setItem("userRole", "customer"); 
       if (user ==="admin")  AsyncStorage.setItem("userRole", "admin"); 
-    
       AsyncStorage.setItem("ID",response.data._id)
       navigation.navigate("Main")
     } catch (error) {
+      console.log(error)
       Alert.alert('Login Failed', 'Invalid email or password');
     }
   };

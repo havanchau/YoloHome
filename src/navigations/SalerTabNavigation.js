@@ -17,18 +17,13 @@ const SalerStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="NewDevice"
-        component={NewDevice}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Splash"
-        component={Splash}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
         name="DeviceSale"
         component={DeviceSale}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NewDevice"
+        component={NewDevice}
         options={{ headerShown: false }}
       />
       <Stack.Screen
