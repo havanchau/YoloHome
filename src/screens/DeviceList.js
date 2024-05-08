@@ -50,6 +50,6 @@ export default DeviceList = () =>
               </View>
             </View>
           ))}
-            </ScrollView>
+        </ScrollView>
     );
 }

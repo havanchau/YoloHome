@@ -1,22 +1,43 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, Image, TouchableOpacity, Alert } from "react-native";
 import LottieView from "lottie-react-native";
-import { TailwindProvider } from "tailwindcss-react-native";
 import { useNavigation } from "@react-navigation/native";
+import axios from 'axios';
+import AsyncStorage from "@react-native-async-storage/async-storage"; 
 
 import logo from "../../../assets/logo.png";
 import homeJson from "../../../assets/home_1.json";
 
 export default Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigation = useNavigation();
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
-  const handlePress = () => {
-    console.log("Button pressed");
-    navigation.navigate("UserManagement");
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://192.168.154.235:4000/users/login', {
+        email: email,
+        password: password
+      });
+      user=response.data.role
+      console.log(response)
+      AsyncStorage.setItem("isLoggedIn", "true");
+      if (user ==="saler")  AsyncStorage.setItem("userRole", "saler"); 
+      if (user ==="customer")  AsyncStorage.setItem("userRole", "customer"); 
+      if (user ==="admin")  AsyncStorage.setItem("userRole", "admin"); 
+    
+      AsyncStorage.setItem("ID",response.data._id)
+      navigation.navigate("Main")
+    } catch (error) {
+      Alert.alert('Login Failed', 'Invalid email or password');
+    }
   };
+
   return (
     <View className="flex-1 items-center pb-10 pt-10">
       <Text className="font-bold text-2xl">Welcome back!</Text>
@@ -35,6 +56,8 @@ export default Login = () => {
           autoCapitalize="none"
           autoCorrect={false}
           required
+          value={email}
+          onChangeText={setEmail}
         ></TextInput>
       </View>
       <View className="w-4/5">
@@ -45,6 +68,8 @@ export default Login = () => {
           autoCapitalize="none"
           autoCorrect={false}
           required
+          value={password}
+          onChangeText={setPassword}
         ></TextInput>
       </View>
       <TouchableOpacity
@@ -55,7 +80,7 @@ export default Login = () => {
       </TouchableOpacity>
       <TouchableOpacity
         className="py-3 px-8 mt-6 bg-bluebg rounded-md w-[280] flex items-center"
-        onPress={handlePress}
+        onPress={handleLogin}
       >
         <Text className="text-xl text-white">Đăng nhập</Text>
       </TouchableOpacity>

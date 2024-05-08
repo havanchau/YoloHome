@@ -1,5 +1,4 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -9,7 +8,6 @@ import ControlDevice from "../screens/customers/ControlDevice";
 import InfoUserView from "../screens/admins/InfoAdminView";
 import AccessDevice from "../screens/customers/AccessDevice";
 import AccountInfo from "../screens/shares/AccountInfo"
-import NavBarCustomer from "../components/NavBar/NavBarCustomer";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
