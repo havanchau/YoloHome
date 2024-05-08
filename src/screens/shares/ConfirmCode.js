@@ -12,16 +12,6 @@ export default ConfirmCode = () => {
       <View className='flex-1 py-10 px-5'>
 
         <Text className='mb-5 font-bold text-3xl text-sky-400 '>Please check your email!</Text>
-        {/* <Image 
-          source={logo}
-          className="w-[280] h-[140]"
-        />     */}
-        {/* <LottieView 
-          source={homeJson}
-          autoPlay
-          loop
-          style={{width: 350, height: 260}}
-        />            */}
         <View className='items-center'>
             <View className='flex flex-col space-y-16'>
                 <View className="flex flex-row items-center justify-between mx-auto w-full max-w-xs space-x-6">

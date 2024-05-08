@@ -3,10 +3,10 @@ import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Login from "../screens/Login";
-import Register from "../screens/Register";
-import ResetPassword from "../screens/ResetPassword";
-import Splash from "../screens/Splash";
+import Login from "../screens/shares/Login";
+import Register from "../screens/shares/Register";
+import ResetPassword from "../screens/shares/ResetPassword";
+import Splash from "../screens/shares/Splash";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
