@@ -27,7 +27,7 @@ export default NavBarSaler = () => {
   const [selectedIcon, setSelectedIcon] = useState(null);
 
   const pressHome = () => {
-    navigation.navigate("NewDevice");
+    navigation.navigate("Splash");
   };
 
   const pressShop = () => {
