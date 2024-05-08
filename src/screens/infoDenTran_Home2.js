@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { View, Text, TextInput,Image,TouchableOpacity} from "react-native";
@@ -24,8 +22,8 @@ export default infoDenTran = () => {
   const [sensorValue, setSensorValue] = useState(null); // Thêm state để lưu giá trị từ cambien1
   const [lightValue, setLightValue] = useState(null); // Thêm state để lưu giá trị từ cambien2
   const [humiValue, setHumiValue] = useState(null); // Thêm state để lưu giá trị từ cambien
-  const username = "thanhliemtala";
-  const key = "aio_FkrP18aZxzdTK08d24OWab3YM36g";
+  const username = "thanhliemdvh";
+  const key = "aio_cPjy77J5P1Ywe7UA0XiREjS2bFVP";
   useEffect(() => {
     let interval =null;
 
@@ -59,7 +57,7 @@ export default infoDenTran = () => {
   const sendDataToAdafruit = async (value) => {
     try {
       const response = await axios.post(
-        'https://io.adafruit.com/api/v2/thanhliemtala/feeds/button1/data',
+        'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/button1/data',
         {
           value: value,
         },
@@ -82,7 +80,7 @@ export default infoDenTran = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/button1',
+          'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/button1',
           {
             headers: {
               'X-AIO-Key': key,
@@ -115,7 +113,7 @@ export default infoDenTran = () => {
     const fetchSensorData = async () => {
       try {
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien1',
+          'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/cambien1',
           {
             headers: {
               'X-AIO-Key': key,
@@ -136,7 +134,7 @@ export default infoDenTran = () => {
     const fetchLightData = async () => {
       try {
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien2',
+          'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/cambien2',
           {
             headers: {
               'X-AIO-Key': key,
@@ -156,7 +154,7 @@ export default infoDenTran = () => {
     const fetchHumiData = async () => {
       try {
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien3',
+          'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/cambien3',
           {
             headers: {
               'X-AIO-Key': key,

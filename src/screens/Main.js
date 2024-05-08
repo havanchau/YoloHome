@@ -1,13 +1,17 @@
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { View } from "react-native";
 import CustomerTabNavigator from "../navigations/CustomerTabNavigation";
+import CustomerTabNavigator_Home2 from "../navigations/CustomerTabNavigation_Home2";
 import SalerTabNavigator from "../navigations/SalerTabNavigation";
 import AuthNavigator from "../navigations/AuthNavigation";
 import AdminTabNavigator from "../navigations/AdminNavigation"
 import NavbarCustomer from "../components/NavBar/NavBarCustomer";
+import NavBarCustomer_Home2 from "../components/NavBar/NavBarCustomer_Home2"; 
 import NavbarSaler from "../components/NavBar/NavBarSaler";
 import NavBarAdmin from "../components/NavBar/NavBarAdmin"
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const MyTheme = {
   ...DefaultTheme,
@@ -26,69 +30,72 @@ const Role = {
 const Main = () => {
   const isLoggedIn = true;
   const user = "CUSTOMER";
+  const key = "khong";
+
+
   AsyncStorage.setItem("uid", "66390aafa721d4b54d0e8188");
   AsyncStorage.setItem("name", "Nguyen Thanh Liem");  
+  // AsyncStorage.setItem("ada_username", "username");  
 
 
 
-const axios = require('axios');
+    try {
+      const response =  axios.post('http://192.168.1.167:4000', {
 
-const uri = 'https://cluster0.tctbbi8.mongodb.net/';
-const dbName = 'PROJECT 0';
-const collectionName = 'test';
-const documentId = '66390aafa721d4b54d0e8188';
+      });
 
-async function connectAndQuery() {
-  try {
-    const response = await axios.get(`${uri}databases/${dbName}/collections/${collectionName}/${documentId}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer 596431', // Thay YOUR_ACCESS_TOKEN bằng mã truy cập của bạn
-      },
-    });
-
-    const document = response.data;
-    if (document) {
-      const adaKey = document.ada_key;
+      const adaKey = response.data.ada_key;
       console.log('ada_key:', adaKey);
-    } else {
-      console.log('Document not found');
+
+      // Tiếp tục xử lý giá trị ada_key theo nhu cầu của bạn
+    } catch (error) {
+      console.error('Error:', error);
     }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-
-connectAndQuery();
+  
 
 
+ 
+  
+
+  
 
 
 
+
+
+
+     
 
 
   return (
     <NavigationContainer theme={MyTheme}>
       {isLoggedIn ? (
         <>
-          {user === Role.customer ? (
+          {user === Role.customer && key === "aio_FkrP18aZxzdTK08d24OWab3YM36g" ? (
+            <>
+              <CustomerTabNavigator_Home2 />
+              <View>
+                <NavBarCustomer_Home2 />
+              </View>
+            </>
+          ) : user === Role.customer && key === "aio_cPjy77J5P1Ywe7UA0XiREjS2bFVP" ? (
             <>
               <CustomerTabNavigator />
-              <View className="">
+              <View>
                 <NavbarCustomer />
               </View>
             </>
           ) : user === Role.saler ? (
             <>
               <SalerTabNavigator />
-              <View className="">
+              <View>
                 <NavbarSaler />
               </View>
             </>
           ) : user === Role.admin ? (
             <>
               <AdminTabNavigator />
-              <View className="">
+              <View>
                 <NavBarAdmin />
               </View>
             </>
@@ -98,10 +105,7 @@ connectAndQuery();
         <AuthNavigator />
       )}
     </NavigationContainer>
-  );
+  ); 
 };
+
 export default Main;
-
-
-
-

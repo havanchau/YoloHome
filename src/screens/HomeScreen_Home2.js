@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 // const username =  AsyncStorage.getItem("ada_username");
 // const key =   AsyncStorage.getItem("ada_key");
 
-export default HomeScreen = () => {
+export default HomeScreen_Home2 = () => {
   const navigation = useNavigation();
   return (
     <TailwindProvider>
@@ -17,8 +17,8 @@ export default HomeScreen = () => {
             </TouchableOpacity>
         </View>
         <View className = 'w-[280] h-[80]'>
-            <TouchableOpacity className='py-3 px-8 mt-6 bg-bluebg rounded-md  flex-1 items-center' onPress={()=>navigation.navigate('ControlDevice')}>
-                <Text className='text-base text-white'>Quyền điều khiển thiết bị</Text>
+            <TouchableOpacity className='py-3 px-8 mt-6 bg-bluebg rounded-md  flex-1 items-center' onPress={()=>navigation.navigate('ControlDevice_Home2')}>
+                <Text className='text-base text-white'>Quyền điều khiển thiết bị 2 </Text>
             </TouchableOpacity>
         </View>
  
@@ -26,4 +26,3 @@ export default HomeScreen = () => {
     </TailwindProvider>
   );
 };
-

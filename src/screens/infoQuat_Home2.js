@@ -1,22 +1,14 @@
-
-
 import React, { useState, useEffect } from "react";
+import { View, Text, TextInput, Image, TouchableOpacity } from "react-native";
 import axios from 'axios';
-import { View, Text, TextInput,Image,TouchableOpacity} from "react-native";
 import LottieView from 'lottie-react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo.png";
 import homeJson from "../../assets/home_1.json";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
-export default infoDenTran = () => {
-
-  // const [mode, setMode] = useState("TẮT");
-  // const [timer, setTimer] = useState(0);
-  // const [currentDate, setCurrentDate] = useState(new Date().getDate());
+export default infoQuat = () => {
   const [mode, setMode] = useState("TẮT");
   const [timer, setTimer] = useState(0);
   const [prevMode, setPrevMode] = useState("TẮT"); // Thêm biến trạng thái lưu giữ giá trị trước đó
@@ -24,12 +16,13 @@ export default infoDenTran = () => {
   const [sensorValue, setSensorValue] = useState(null); // Thêm state để lưu giá trị từ cambien1
   const [lightValue, setLightValue] = useState(null); // Thêm state để lưu giá trị từ cambien2
   const [humiValue, setHumiValue] = useState(null); // Thêm state để lưu giá trị từ cambien
-  const username = "thanhliemtala";
-  const key = "aio_FkrP18aZxzdTK08d24OWab3YM36g";
-  useEffect(() => {
-    let interval =null;
+  const username = "thanhliemdvh";
+  const key = "aio_cPjy77J5P1Ywe7UA0XiREjS2bFVP";
 
-    if (mode === "BẬT") {
+  useEffect(() => {
+    let interval = null;
+
+    if (mode === "MỨC 1" || mode === "MỨC 2" || mode === "MỨC 3") {
       interval = setInterval(() => {
         setTimer((prevTimer) => prevTimer + 1);
       }, 1000);
@@ -56,33 +49,11 @@ export default infoDenTran = () => {
     };
   }, [currentDate]);
 
-  const sendDataToAdafruit = async (value) => {
-    try {
-      const response = await axios.post(
-        'https://io.adafruit.com/api/v2/thanhliemtala/feeds/button1/data',
-        {
-          value: value,
-        },
-        {
-          headers: {
-            'X-AIO-Key': key,
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-
-      // Xử lý dữ liệu nhận được từ Adafruit
-      console.log('Dữ liệu từ Adafruit:', response.data);
-    } catch (error) {
-      console.error('Lỗi khi gửi dữ liệu tới Adafruit:', error);
-    }
-  };
-
- useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/button1',
+          'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/button2',
           {
             headers: {
               'X-AIO-Key': key,
@@ -94,15 +65,22 @@ export default infoDenTran = () => {
         const value = response.data.last_value; // Lấy giá trị mới nhất từ Adafruit
 
 
-
+        if (value !== prevMode) { // So sánh giá trị mới với giá trị trước đó
           // Cập nhật giá trị vào trạng thái của ứng dụng
           if (value === "0") {
             // mode = "TẮT";
             setMode("TẮT");
           } else if (value === "1") {
             // mode = "MỨC 1";
-            setMode("BẬT");
-          } 
+            setMode("MỨC 1");
+          } else if (value === "2") {
+            // mode = "MỨC 2";
+            setMode("MỨC 2");
+          } else if (value === "3") {
+          //  mode = "MỨC 3";
+            setMode("MỨC 3");
+          }
+        }
 
         setPrevMode(value); // Cập nhật giá trị mới vào biến trạng thái lưu giữ giá trị trước đó
 
@@ -115,7 +93,7 @@ export default infoDenTran = () => {
     const fetchSensorData = async () => {
       try {
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien1',
+          'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/cambien1',
           {
             headers: {
               'X-AIO-Key': key,
@@ -136,7 +114,7 @@ export default infoDenTran = () => {
     const fetchLightData = async () => {
       try {
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien2',
+          'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/cambien2',
           {
             headers: {
               'X-AIO-Key': key,
@@ -156,7 +134,7 @@ export default infoDenTran = () => {
     const fetchHumiData = async () => {
       try {
         const response = await axios.get(
-          'https://io.adafruit.com/api/v2/thanhliemtala/feeds/cambien3',
+          'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/cambien3',
           {
             headers: {
               'X-AIO-Key': key,
@@ -193,22 +171,27 @@ export default infoDenTran = () => {
     };
   }, []); // Chỉ gọi useEffect này một lần duy nhất khi component được render
 
-
-
   const toggleMode = () => {
-    if (mode === "TẮT"){
-        setMode("BẬT");
-        sendDataToAdafruit(1);
+    if (mode === "TẮT") {
+      setMode("MỨC 1");
+      sendDataToAdafruit(1);
+    } else if (mode === "MỨC 1") {
+      setMode("MỨC 2");
+      sendDataToAdafruit(2);
+    } else if (mode === "MỨC 2") {
+      setMode("MỨC 3");
+      sendDataToAdafruit(3);
     } else {
       setMode("TẮT");
       sendDataToAdafruit(0);
-    }  
-    };
-    const resetTimer = () => {
-    setTimer(0);
-    };
+    }
+  };
 
-    const formatTime = (time) => {
+  const resetTimer = () => {
+    setTimer(0);
+  };
+
+  const formatTime = (time) => {
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time % 3600) / 60);
     const seconds = time % 60;
@@ -218,26 +201,46 @@ export default infoDenTran = () => {
     const formattedSeconds = String(seconds).padStart(2, "0");
 
     return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
-    };
+  };
 
+  const sendDataToAdafruit = async (value) => {
+    try {
+      const response = await axios.post(
+        'https://io.adafruit.com/api/v2/thanhliemdvh/feeds/button2/data',
+        {
+          value: value,
+        },
+        {
+          headers: {
+            'X-AIO-Key': key,
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+
+      // Xử lý dữ liệu nhận được từ Adafruit
+      console.log('Dữ liệu từ Adafruit:', response.data);
+    } catch (error) {
+      console.error('Lỗi khi gửi dữ liệu tới Adafruit:', error);
+    }
+  };
 
   return (
-  <TailwindProvider>
+    <TailwindProvider>
       <View className='flex-1 items-center pb-10 pt-10'>
         <Text className='font-bold text-2xl'>Thông tin chi tiết</Text>
-        <Image 
+        <Image
           source={logo}
           className="w-[140] h-[70]"
-        />    
-        <LottieView 
+        />
+        <LottieView
           source={homeJson}
           autoPlay
-          loop
-          style={{width: 70, height:50}}
-        />        
-
+          loop={true}
+        />
         <Text className='font-bold text-xl mt-4'>Chế độ: {mode}</Text>
-        <Text className='font-bold text-xl'>Thời gian: {formatTime(timer)}</Text>   
+        <Text className='font-bold text-xl'>Thời gian: {formatTime(timer)}</Text>
+
         <TouchableOpacity
           onPress={toggleMode}
           style={{
@@ -252,15 +255,17 @@ export default infoDenTran = () => {
         >
         <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Chuyển đổi chế độ</Text>
         </TouchableOpacity>
+
         <TouchableOpacity
           style={{
             alignItems: 'center',
             paddingVertical: 30,
             paddingHorizontal: 60,
             marginTop: 8,
+            marginBottom: 8,
             backgroundColor: 'blue',
             borderRadius: 30,
-            width: "70%",
+            width: '70%',
           }}
         >
           <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Nhiệt độ: {sensorValue} °C</Text>
@@ -272,15 +277,16 @@ export default infoDenTran = () => {
             paddingVertical: 30,
             paddingHorizontal: 60,
             marginTop: 8,
+            marginBottom: 8,
             backgroundColor: 'blue',
             borderRadius: 30,
-            width: "70%",
+            width: '70%',
           }}
         >
           <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Ánh sáng: {lightValue} lux</Text>
         </TouchableOpacity>
 
-          <TouchableOpacity
+        <TouchableOpacity
           style={{
             alignItems: 'center',
             paddingVertical: 30,
@@ -288,12 +294,12 @@ export default infoDenTran = () => {
             marginTop: 8,
             backgroundColor: 'blue',
             borderRadius: 30,
-            width: "70%",
+            width: '70%',
           }}
         >
           <Text style={{ fontSize: 18, color: 'white', fontWeight: 'bold' }}>Độ ẩm: {humiValue} %</Text>
         </TouchableOpacity>
-      </View>
-    </TailwindProvider>
+              </View>
+            </TailwindProvider>
   );
 };

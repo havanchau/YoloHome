@@ -3,17 +3,16 @@ import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import HomeScreen from "../screens/HomeScreen";
 
-
+import HomeScreen_Home2 from "../screens/HomeScreen_Home2";
 import UserManagement from "../screens/admins/UserManagement";
-import ControlDevice from "../screens/customers/ControlDevice";
+import ControlDevice_Home2 from "../screens/customers/ControlDevice_Home2";
 import InfoUserView from "../screens/admins/InfoAdminView";
-import AccessDevice from "../screens/customers/AccessDevice";
+import AccessDevice_Home2 from "../screens/customers/AccessDevice_Home2";
 import AccountInfo from "../screens/shares/AccountInfo"
-import NavBarCustomer from "../components/NavBar/NavBarCustomer";
-import infoDenTran from "../screens/infoDenTran";
-import infoQuat from "../screens/infoQuat";
+import NavBarCustomer_Home2 from "../components/NavBar/NavBarCustomer_Home2";
+import infoDenTran_Home2 from "../screens/infoDenTran_Home2";
+import infoQuat_Home2 from "../screens/infoQuat_Home2";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -22,8 +21,8 @@ const CustomerStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
+        name="HomeScreen_Home2"
+        component={HomeScreen_Home2}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -32,8 +31,8 @@ const CustomerStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="ControlDevice"
-        component={ControlDevice}
+        name="ControlDevice_Home2"
+        component={ControlDevice_Home2}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -42,8 +41,8 @@ const CustomerStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="AccessDevice"
-        component={AccessDevice}
+        name="AccessDevice_Home2"
+        component={AccessDevice_Home2}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -52,13 +51,13 @@ const CustomerStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="infoDenTran"
-        component={infoDenTran}
+        name="infoDenTran_Home2"
+        component={infoDenTran_Home2}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="infoQuat"
-        component={infoQuat}
+        name="infoQuat_Home2"
+        component={infoQuat_Home2}
         options={{ headerShown: false }}
       />
 
@@ -67,7 +66,7 @@ const CustomerStack = () => {
 };
 
 
-const CustomerTabNavigator = () => {
+const CustomerTabNavigator_Home2 = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -75,11 +74,10 @@ const CustomerTabNavigator = () => {
         cardStyle: { backgroundColor: "white" },
       }}
     >
-      <Stack.Screen name="Home" component={CustomerStack} />
+      <Stack.Screen name="Home2" component={CustomerStack} />
     </Stack.Navigator>
   );
 };
 
 
- export default CustomerTabNavigator;
-
+ export default CustomerTabNavigator_Home2;
