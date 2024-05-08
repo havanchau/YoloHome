@@ -25,7 +25,7 @@ export default Login = () => {
         password: password
       });
       user=response.data.role
-      console.log(response)
+      //console.log(response)
       AsyncStorage.setItem("isLoggedIn", "true");
       if (user ==="saler")  AsyncStorage.setItem("userRole", "saler"); 
       if (user ==="user")  AsyncStorage.setItem("userRole", "customer"); 
