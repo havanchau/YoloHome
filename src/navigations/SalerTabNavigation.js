@@ -9,7 +9,7 @@ import ChatContact from "../screens/shares/ChatContact";
 import ViewDeviceSaler from "../screens/salers/ViewDeviceSaler";
 import InfoUserView from "../screens/shares/InfoUserView";
 import Splash from "../screens/shares/Splash";
-import Login from "../screens/shares/Login"
+import DeviceList from "../screens/DeviceList"
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -51,11 +51,12 @@ const SalerStack = () => {
         component={InfoUserView}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
-        name="Login"
-        component={Login}
+       <Stack.Screen
+        name="DeviceList"
+        component={DeviceList}
         options={{ headerShown: false }}
       />
+    
     </Stack.Navigator>
   );
 };

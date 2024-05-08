@@ -22,8 +22,8 @@ export default DeviceList = () =>
         { id: 5, name: "Television", status: "Running", imageUri: television },
     ];
     return(
-  
-        <ScrollView className='flex-1 items-center pt-10 pb-10'>
+        <View className="flex-1 items-center pb-10 pt-10">
+        <ScrollView>
             {deviceList.map((device, index) => (
             <View key={index} className="mb-2">
               <View className="flex flex-row w-[360] h-[80]  border border-gray-300 rounded-xl bg-white items-center content-center">
@@ -51,5 +51,6 @@ export default DeviceList = () =>
             </View>
           ))}
         </ScrollView>
+        </View>
     );
 }

@@ -5,10 +5,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import UserManagement from "../screens/admins/UserManagement";
 import ControlDevice from "../screens/customers/ControlDevice";
-import InfoUserView from "../screens/admins/InfoAdminView";
+import InfoAdminView from "../screens/admins/InfoAdminView";
 import AccessDevice from "../screens/customers/AccessDevice";
 import AccountInfo from "../screens/shares/AccountInfo"
-
+import InfoUserView from "../screens/shares/InfoUserView";
+import Login from "../screens/shares/Login";
+import DeviceList from "../screens/DeviceList"
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -31,8 +33,8 @@ const CustomerStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="InfoUserView"
-        component={InfoUserView}
+        name="InfoAdminView"
+        component={InfoAdminView}
         options={{ headerShown: false }}
       />
       <Stack.Screen
@@ -45,7 +47,21 @@ const CustomerStack = () => {
         component={AccountInfo}
         options={{ headerShown: false }}
       />
-   
+    <Stack.Screen
+        name="InfoUserView"
+        component={InfoUserView}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="DeviceList"
+        component={DeviceList}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 };
