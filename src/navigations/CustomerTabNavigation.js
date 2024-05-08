@@ -9,7 +9,8 @@ import InfoAdminView from "../screens/admins/InfoAdminView";
 import AccessDevice from "../screens/customers/AccessDevice";
 import AccountInfo from "../screens/shares/AccountInfo"
 import InfoUserView from "../screens/shares/InfoUserView";
-import Login from "../screens/shares/Login"
+import Login from "../screens/shares/Login";
+import DeviceList from "../screens/DeviceList"
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -54,6 +55,11 @@ const CustomerStack = () => {
       <Stack.Screen
         name="Login"
         component={Login}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="DeviceList"
+        component={DeviceList}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
