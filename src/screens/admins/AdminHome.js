@@ -17,7 +17,7 @@ const AdminHome = () => {
         const totalUsersResponse = await axios.get('http://192.168.154.235:4000/users');
         const totalUsersCount = totalUsersResponse.data.length;
         setTotalUsers(totalUsersCount);
-
+        setUserList(totalUsersResponse.data);
         const today = new Date();
         const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
         

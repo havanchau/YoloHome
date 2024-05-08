@@ -8,7 +8,7 @@ import * as Sharing from "expo-sharing"
 import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import * as Updates from 'expo-updates';
 export default InfoUserView = ({ route }) =>
     
 {   
@@ -57,13 +57,12 @@ export default InfoUserView = ({ route }) =>
 
     }
     const navigation = useNavigation();
-    const logout =()=>
+    const logout =async()=>
     {
         AsyncStorage.setItem("userRole", "null"); 
         AsyncStorage.setItem("ID","null")
         AsyncStorage.setItem("isLoggedIn","false")
-        //navigation.navigate("Login")
-            
+       await Updates.reloadAsync();
     }
     return(
   
