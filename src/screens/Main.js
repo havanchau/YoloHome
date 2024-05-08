@@ -23,7 +23,7 @@ const Role = {
 };
 
 const Main = () => {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   const user = "CUSTOMER";
   AsyncStorage.setItem("uid", "662c708b0ea5b75e861d8d1c");
   AsyncStorage.setItem("name", "Ha Van Chau");
