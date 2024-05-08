@@ -6,6 +6,9 @@ import * as FileSystem from 'expo-file-system'
 import XLSX from 'xlsx';
 import * as Sharing from "expo-sharing"
 import axios from 'axios';
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 export default InfoUserView = ({ route }) =>
     
 {   
@@ -53,6 +56,15 @@ export default InfoUserView = ({ route }) =>
         });
 
     }
+    const navigation = useNavigation();
+    const logout =()=>
+    {
+        AsyncStorage.setItem("userRole", "null"); 
+        AsyncStorage.setItem("ID","null")
+        AsyncStorage.setItem("isLoggedIn","false")
+        //navigation.navigate("Login")
+            
+    }
     return(
   
             <View className='flex-1 items-center pt-10'>
@@ -98,13 +110,13 @@ export default InfoUserView = ({ route }) =>
                         <Text className='font-bold text-lg w-[240] '>Lịch sử hoạt động</Text>
                         <TouchableOpacity><Feather name='chevron-right' size={20}></Feather></TouchableOpacity>
                     </View>
-                    <View className='flex flex-row items-center p-3 border-b border-lightblue'>
+                    <TouchableOpacity onPress={logout} className='flex flex-row items-center p-3 border-b border-lightblue'>
                         <View className='rounded-full bg-red-400 p-2 mr-3'>
                             <Entypo name='warning' size={20} className='text-red-900'></Entypo>
                         </View>
                         <Text className='font-bold text-lg w-[240] text-red-600 '>Đăng xuất</Text>
                         <TouchableOpacity><Feather name='chevron-right' size={20}></Feather></TouchableOpacity>
-                    </View>
+                    </TouchableOpacity>
                 </ScrollView>
             </View>
     );

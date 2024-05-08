@@ -1,5 +1,6 @@
-import { React, useState } from "react";
+import { React, useState,useEffect } from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   Entypo,
   AntDesign,
@@ -9,6 +10,19 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 export default NavBarSaler = () => {
+  const [id, setUser] = useState(null);
+  useEffect(() => {
+    const getUserRole = async () => {
+      try {
+        const id = await AsyncStorage.getItem("ID");
+        setUser(id);
+      } catch (error) {
+        console.error("Error getting user role:", error);
+      }
+    };
+
+    getUserRole();
+  }, []); 
   const navigation = useNavigation();
   const [selectedIcon, setSelectedIcon] = useState(null);
 
@@ -25,7 +39,7 @@ export default NavBarSaler = () => {
   };
 
   const pressAcc = () => {
-    navigation.navigate("MessageContact");
+    navigation.navigate("InfoUserView",{ userId: id });
   };
 
   const iconColor = (iconName) => {

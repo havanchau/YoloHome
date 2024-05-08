@@ -1,19 +1,29 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import Login from "../screens/shares/Login";
 import Register from "../screens/shares/Register";
 import ResetPassword from "../screens/shares/ResetPassword";
 import Splash from "../screens/shares/Splash";
-
+import Main from "../screens/Main"
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: "white",
+  },
+};
 const AuthStack = () => {
   return (
     <Stack.Navigator>
+       <Stack.Screen
+        name="Splash"
+        component={Splash}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="Login"
         component={Login}
@@ -30,8 +40,8 @@ const AuthStack = () => {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Splash"
-        component={Splash}
+        name="Main"
+        component={Main}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
@@ -40,7 +50,8 @@ const AuthStack = () => {
 
 const AuthNavigation = () => {
   return (
-    <Stack.Navigator
+  
+      <Stack.Navigator
       screenOptions={{
         headerShown: false,
         cardStyle: { backgroundColor: "white" },
@@ -48,6 +59,7 @@ const AuthNavigation = () => {
     >
       <Stack.Screen name="Home" component={AuthStack} />
     </Stack.Navigator>
+    
   );
 };
 
