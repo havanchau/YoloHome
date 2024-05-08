@@ -16,7 +16,7 @@ const ChatContact = ({ route }) => {
   const [socket, setSocket] = useState(null);
   const navigation = useNavigation();
   useEffect(() => {
-    AsyncStorage.getItem("uid")
+    AsyncStorage.getItem("ID")
       .then((uid) => {
         setUserIdSent(uid);
       })

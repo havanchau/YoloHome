@@ -11,26 +11,18 @@ const ViewDeviceSaler = ({ route }) => {
 
   const handleEditInforDevice = async () => {
     const { __v, _id, ...newData } = device;
-
     axios
       .put(`http://10.0.2.2:4000/devicesalers/${_id}`, {
-        // discount: newData.discount,
-        // price: newData.price,
-        // amount: newData.amount,
-        // userId: newData.userId,
-        // information: {
-        //   name: newData.information.name,
-        //   image: newData.information.image,
-        //   describe: newData.information.describe,
-        //   type: newData.information.type,
-        //   power: newData.information.power,
-        // },
         discount: newData.discount,
         price: newData.price,
         amount: newData.amount,
         userId: newData.userId,
         information: {
-          ...newData.information,
+          name: newData.information.name,
+          image: '',
+          describe: newData.information.describe,
+          type: newData.information.type,
+          power: newData.information.power,
         },
       })
       .then((response) => console.log(response.data))
@@ -47,6 +39,7 @@ const ViewDeviceSaler = ({ route }) => {
                 className=""
                 onPress={() => {
                   setIsEdit(false);
+                  handleEditInforDevice();
                 }}
               >
                 <Text className="underline text-blue-700 text-lg">
@@ -57,7 +50,6 @@ const ViewDeviceSaler = ({ route }) => {
               <TouchableOpacity
                 className=""
                 onPress={() => {
-                  handleEditInforDevice();
                   setIsEdit(true);
                 }}
               >

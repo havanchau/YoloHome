@@ -19,7 +19,7 @@ const DeviceSale = () => {
   const debounceSearch = useDebounce(searchDevices, 500);
 
   useEffect(() => {
-    AsyncStorage.getItem("uid")
+    AsyncStorage.getItem("ID")
       .then((uid) => {
         setUid(uid);
       })
