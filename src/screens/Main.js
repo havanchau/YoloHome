@@ -76,30 +76,9 @@ const Main = () => {
               ) : null}
             </>
           )}
-          {isLogin=="false" && (
+          {isLogin==="false" && (
             <>
-              {user === Role.customer ? (
-                <>
-                  <CustomerTabNavigator />
-                  {/* <View className="">
-                    <NavbarCustomer />
-                  </View> */}
-                </>
-              ) : user === Role.saler ? (
-                <>
-                  <SalerTabNavigator />
-                  {/* <View className="">
-                    <NavbarSaler />
-                  </View> */}
-                </>
-              ) : user === Role.admin ? (
-                <>
-                  <AdminTabNavigator />
-                  {/* <View className="">
-                    <NavBarAdmin />
-                  </View> */}
-                </>
-              ) : null}
+             <AuthNavigator></AuthNavigator>
             </>
           )} 
         </>

@@ -8,13 +8,14 @@ import * as Sharing from "expo-sharing"
 import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import * as Updates from 'expo-updates';
 export default InfoUserView = ({ route }) =>
     
 {   
     const { userId } = route.params;
   const [userData, setUserData] = useState(null);
   const [userList, setUserList] = useState([]);
+  const [showPersonalInfo, setShowPersonalInfo] = useState(false);
   useEffect(() => {
     const fetchUserList = async () => {
       try {
@@ -57,14 +58,20 @@ export default InfoUserView = ({ route }) =>
 
     }
     const navigation = useNavigation();
-    const logout =()=>
+    const logout =async()=>
     {
         AsyncStorage.setItem("userRole", "null"); 
         AsyncStorage.setItem("ID","null")
         AsyncStorage.setItem("isLoggedIn","false")
-        //navigation.navigate("Login")
-            
+       await Updates.reloadAsync();
     }
+    const device=()=>
+        {
+            navigation.navigate("DeviceList")
+        }
+    const handleinfo = () => {
+        setShowPersonalInfo(!showPersonalInfo);
+    };
     return(
   
             <View className='flex-1 items-center pt-10'>
@@ -89,20 +96,28 @@ export default InfoUserView = ({ route }) =>
                         <Text className='font-bold text-lg w-[240] '>Xuất báo cáo về người dùng</Text>
                         <Feather name='chevron-right' size={20}></Feather>
                     </TouchableOpacity>
-                    <TouchableOpacity  className='flex flex-row items-center p-3 border-b border-lightblue'>
+                    <TouchableOpacity  onPress={handleinfo} className='flex flex-row items-center p-3 border-b border-lightblue'>
                         <View className='rounded-full bg-lightblue p-2 mr-3'>
                             <Entypo name='text-document' size={20} className='text-bluebg'></Entypo>
                         </View>
                         <Text  className='font-bold text-lg w-[240] '>Thông tin cá nhân</Text>
                         <TouchableOpacity><Feather name='chevron-right' size={20}></Feather></TouchableOpacity>
                     </TouchableOpacity>
-                    <View className='flex flex-row items-center p-3 border-b border-lightblue'>
+                    {showPersonalInfo && (
+                    <View style={{ padding: 20, borderBottomWidth: 1, borderBottomColor: 'lightblue' }}>
+                        <Text className="font-bold text-blue-500">Họ và tên: {userData?.fullname}</Text>
+                        <Text className="font-bold ">ID: {userData?._id}</Text>
+                        <Text className="font-bold ">Username: {userData?.username}</Text>
+                        <Text className="font-bold ">Tổng số thiết bị: 10</Text>
+                    </View>
+                )}
+                    <TouchableOpacity onPress={device} className='flex flex-row items-center p-3 border-b border-lightblue'>
                         <View className='rounded-full bg-lightblue p-2 mr-3'>
                             <Entypo name='sweden' size={20} className='text-bluebg'></Entypo>
                         </View>
                         <Text className='font-bold text-lg w-[240] '>Danh sách thiết bị</Text>
                         <TouchableOpacity><Feather name='chevron-right' size={20}></Feather></TouchableOpacity>
-                    </View>
+                    </TouchableOpacity>
                     <View className='flex flex-row items-center p-3 border-b border-lightblue'>
                         <View className='rounded-full bg-lightblue p-2 mr-3'>
                             <Entypo name='back-in-time' size={20} className='text-bluebg'></Entypo>

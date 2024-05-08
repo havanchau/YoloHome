@@ -8,8 +8,9 @@ export default DeviceList = () =>
 {
     return(
   
-            <ScrollView className='flex-1 items-center pt-10'>
+            // <ScrollView className='flex-1 items-center pt-10'>
                 
-            </ScrollView>
+            // </ScrollView>
+            <View></View>
     );
 }

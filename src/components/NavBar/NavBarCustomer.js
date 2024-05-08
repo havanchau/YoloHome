@@ -1,11 +1,24 @@
-import {React, useState }from "react";
+import {React, useState,useEffect}from "react";
 import { View, Text, Image,TouchableOpacity} from "react-native";
 import {Entypo,Ionicons,FontAwesome6,MaterialCommunityIcons} from "react-native-vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from '@react-navigation/native';
 export default NavBarCustomer = () =>
 {   const navigation = useNavigation();
     const [selectedIcon, setSelectedIcon] = useState(null);
+    const [id, setUser] = useState(null);
+    useEffect(() => {
+        const getUserRole = async () => {
+        try {
+            const id = await AsyncStorage.getItem("ID");
+            setUser(id);
+        } catch (error) {
+            console.error("Error getting user role:", error);
+        }
+        };
 
+        getUserRole();
+    }, []); 
     const pressHome = () => {
         navigation.navigate('HomeScreen');
     }
@@ -21,7 +34,7 @@ export default NavBarCustomer = () =>
 
     const pressAcc = () => {
 
-        navigation.navigate('HomeScreen');
+        navigation.navigate("InfoUserView",{ userId: id });
     }
 
     const iconColor = (iconName) => {
